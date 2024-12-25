@@ -1,38 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*   get_next_line_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jiwnam <jiwnam@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/25 18:54:09 by jiwnam            #+#    #+#             */
-/*   Updated: 2024/12/25 23:41:16 by jiwnam           ###   ########.fr       */
+/*   Updated: 2024/12/25 23:43:23 by jiwnam           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "get_next_line_bonus.h"
 
 char	*get_next_line(int fd)
 {
-	static char	*buf;
+	static char	*buf[1024];
 	char		*line;
 
 	if (fd < 0 || BUFFER_SIZE < 1)
 		return (NULL);
 	line = NULL;
-	if (buf)
+	if (buf[fd])
 	{
-		if (gnl_strchr(buf, '\n'))
-			return (return_line("", &buf));
-		line = gnl_strjoin("", buf);
+		if (gnl_strchr(buf[fd], '\n'))
+			return (return_line("", &buf[fd]));
+		line = gnl_strjoin("", buf[fd]);
 		if (!line)
-			return (gnl_free(NULL, &buf));
-		free(buf);
+			return (gnl_free(NULL, &buf[fd]));
+		free(buf[fd]);
 	}
-	buf = malloc(BUFFER_SIZE + 1);
-	if (!buf)
-		return (gnl_free(&line, &buf));
-	return (make_line(line, &buf, fd));
+	buf[fd] = malloc(BUFFER_SIZE + 1);
+	if (!buf[fd])
+		return (gnl_free(&line, &buf[fd]));
+	return (make_line(line, &buf[fd], fd));
 }
 
 char	*make_line(char *line, char **buf, int fd)
