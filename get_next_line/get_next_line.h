@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: jiwnam <jiwnam@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/01 20:17:47 by jiwnam            #+#    #+#             */
-/*   Updated: 2024/11/12 19:35:28 by jiwnam           ###   ########.fr       */
+/*   Created: 2024/12/24 19:07:06 by jiwnam            #+#    #+#             */
+/*   Updated: 2024/12/25 22:52:35 by jiwnam           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,17 +17,19 @@
 # include <unistd.h>
 
 # ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 10
+#  define BUFFER_SIZE 42
 # endif
 
-//get_next_line_utils.c
-size_t	ft_strlen(const char *s);
-char	*ft_strdup(const char *s);
-char	*ft_strjoin(char const *s1, char const *s2);
-
 //get_next_line.c
-char	*free_str(char **s1, char **s2, int flag, char *line);
 char	*get_next_line(int fd);
-char	*read_next_line(int fd, char **buf, int *idx);
+char	*make_line(char *line, char **buf, int fd);
+char	*return_line(char *line, char **buf);
+
+//get_next_line_utils.c
+char	*ft_strchr(char *str, int c);
+size_t	ft_strlen(char *str);
+char	*ft_strjoin(char *s1, char *s2);
+char	*ft_substr(char	*str, size_t start, size_t len);
+char	*ft_free(char **s1, char **s2);
 
 #endif

@@ -5,91 +5,84 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: jiwnam <jiwnam@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/03 14:54:31 by jiwnam            #+#    #+#             */
-/*   Updated: 2024/11/12 19:37:13 by jiwnam           ###   ########.fr       */
+/*   Created: 2024/12/25 18:54:09 by jiwnam            #+#    #+#             */
+/*   Updated: 2024/12/25 23:11:25 by jiwnam           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-char	*free_str(char **s1, char **s2, int flag, char *line)
-{
-	if (s1 != NULL && *s1 != NULL)
-	{
-		free(*s1);
-		*s1 = NULL;
-	}
-	if (s2 != NULL && *s2 != NULL)
-	{
-		free(*s2);
-		*s2 = NULL;
-	}
-	if (flag)
-		return (NULL);
-	return (line);
-}
-
 char	*get_next_line(int fd)
 {
 	static char	*buf;
 	char		*line;
-	int			read_cnt;
-	static int	idx;
 
+	if (fd < 0 || BUFFER_SIZE < 1)
+		return (NULL);
 	line = NULL;
-	if (buf == NULL)
+	if (buf)
 	{
-		buf = malloc(BUFFER_SIZE + 1);
-		if (buf == NULL)
-			return (NULL);
-		read_cnt = read(fd, buf, BUFFER_SIZE);
-		if (read_cnt <= 0)
-		{
-			idx = 0;
-			return (free_str(&buf, NULL, 1, NULL));
-		}
-		buf[read_cnt] = '\0';
+		if (ft_strchr(buf, '\n'))
+			return (return_line("", &buf));
+		line = ft_strjoin("", buf);
+		if (!line)
+			return (ft_free(NULL, &buf));
+		free(buf);
 	}
-	line = read_next_line(fd, &buf, &idx);
-	if (line == NULL)
-		return (free_str(&buf, NULL, 1, NULL));
-	return (line);
+	buf = malloc(BUFFER_SIZE + 1);
+	if (!buf)
+		return (ft_free(&line, &buf));
+	return (make_line(line, &buf, fd));
 }
 
-char	*read_next_line(int fd, char **buf, int *idx)
+char	*make_line(char *line, char **buf, int fd)
 {
-	char	tmp[2];
-	char	*line;
-	int		read_cnt;
+	int	read_len;
 
-	line = NULL;
-	tmp[0] = *(*buf + (*idx)++);
-	tmp[1] = '\0';
-	while (tmp[0] != '\n')
+	read_len = 1;
+	while (read_len > 0)
 	{
-		if (tmp[0] == '\0')
+		read_len = read(fd, *buf, BUFFER_SIZE);
+		if (read_len < 0)
+			return (ft_free(&line, buf));
+		if (read_len == 0)
 		{
-			read_cnt = read(fd, *buf, BUFFER_SIZE);
-			*idx = 0;
-			if (read_cnt <= 0)
-			{	
-				line = ft_strjoin(line, tmp);
-				return (free_str(buf, NULL, read_cnt, line));
-			}
-			(*buf)[read_cnt] = '\0';
+			ft_free(NULL, buf);
+			return (line);
 		}
-		line = ft_strjoin(line, tmp);
-		if (line == NULL)
-			return (free_str(buf, NULL, 1, NULL));
-		tmp[0] = *(*buf + (*idx)++);
+		*(*buf + read_len) = '\0';
+		if (ft_strchr(*buf, '\n'))
+			return (return_line(line, buf));
+		if (!line)
+			line = "";
+		line = ft_strjoin(line, *buf);
+		if (!line)
+			return (ft_free(NULL, buf));
 	}
-	line = ft_strjoin(line, tmp);
-	if (*(*buf + *idx) == '\0')
+	return (return_line(line, buf));
+}
+
+char	*return_line(char *line, char **buf)
+{
+	char	*new_buf;
+	char	*buf_idx;
+
+	buf_idx = ft_strchr(*buf, '\n') + 1;
+	new_buf = ft_substr(buf_idx, 0, ft_strlen(buf_idx));
+	if (!new_buf)
+		return (ft_free(&line, buf));
+	*(buf_idx) = '\0';
+	if (!line)
+		line = "";
+	line = ft_strjoin(line, *buf);
+	if (!line)
+		return (ft_free(buf, &new_buf));
+	free(*buf);
+	if (ft_strlen(new_buf) < 1)
 	{
-		free_str(buf, NULL, 1, NULL);
-		*idx = 0;
+		free(new_buf);
+		new_buf = NULL;
 	}
-	if (line == NULL)
-		return (free_str(buf, NULL, 1, NULL));
+	*buf = new_buf;
 	return (line);
 }
