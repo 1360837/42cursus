@@ -6,39 +6,47 @@
 #    By: jiwnam <jiwnam@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/11/27 16:14:00 by jiwnam            #+#    #+#              #
-#    Updated: 2024/11/27 16:24:31 by jiwnam           ###   ########.fr        #
+#    Updated: 2024/12/26 23:57:43 by jiwnam           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME=libftprintf.a
+NAME		= libftprintf.a
 
-CC=cc
-CFLAG=-Wall -Wextra -Werror
-RM=rm
-RMFLAGS=-f
-AR=ar
-ARFLAG=crs
+LIBFTDIR	= ../libft
+LIBFTFILE	= libft.a
 
-INCLUDES=./ft_printf.h
+CC		= cc
+CFLAG	= -Wall -Wextra -Werror
+RM		= rm
+RMFLAG	= -f
+AR		= ar
+ARFLAG	= crs
 
-SRCS = 
+INCLUDE	= ./ft_printf.h
 
-OBJS = $(SRCS:.c=.o)
+SRCS	= ft_printf.c	\
+		  ft_printf_unum.c
+
+OBJS	= $(SRCS:.c=.o)
+
+%.o: %.c
+	$(CC) $(CFLAG) -c $< -I$(LIBFTDIR) -o $@
 
 all: $(NAME)
 
-%.o: %.c
-	$(CC) $(CFLAG) -c $< -o $@
+$(NAME): $(OBJS)
+	make -C $(LIBFTDIR)
+	cp $(LIBFTDIR)/$(LIBFTFILE) $(NAME)
+	$(AR) $(ARFLAG) $@ $?
 
 clean:
-	$(RM) $(RMFLAG) $(OBJ)
+	make -C $(LIBFTDIR) clean
+	$(RM) $(RMFLAG) $(OBJS)
 
 fclean: clean
+	make -C $(LIBFTDIR) fclean
 	$(RM) $(RMFLAG) $(NAME)
 
 re: fclean all
-
-$(NAME): $(OBJS)
-		   $(AR) $(ARFLAG) $@ $^
 
 .PHONY: all clean fclean re
