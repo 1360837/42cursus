@@ -6,7 +6,7 @@
 #    By: jiwnam <jiwnam@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/13 16:12:38 by jiwnam            #+#    #+#              #
-#    Updated: 2025/01/13 18:57:51 by jiwnam           ###   ########.fr        #
+#    Updated: 2025/01/13 23:07:23 by jiwnam           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,24 +35,24 @@ all			: $(NAME)
 
 $(NAME)		: $(PRINTF) $(OBJS) $(SERVER) $(CLIENT)
 
-$(SERVER)	: 
+$(SERVER)	: $(SERVER_OBJ)
+				$(CC) $(CCFLAG) $^ -L./ft_printf -lftprintf.a -o $@ 
 
-$(CLIENT)	:
+$(CLIENT)	: $(CLIENT_OBJ)
+				$(CC) $(CCFLAG) $^ -L./ft_printf -lftprintf.a -o $@ 
 
 $(OBJ_DIR)	:
 				mkdir -p $(OBJ_DIR)
 
-$(OBJ_DIR)/%.o	:
+$(OBJ_DIR)/%.o	: %.c
 				$(CC) $(CCFLAG) -I./ft_printf -c $< -o $@
-
-
 
 clean		:
 				make -C $(PRINTF_DIR) clean
 				$(RM) $(RMFLAG) $(OBJ_DIR)
 
 fclean		: clean
-				make -C $(PRINTF_DIR) fclean
+				$(RM) $(RMFLAG) $(PRINTF_FILE)
 				$(RM) $(RMFLAG) $(SERVER)
 				$(RM) $(RMFLAG) $(CLIENT)
 
