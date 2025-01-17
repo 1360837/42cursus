@@ -6,7 +6,7 @@
 /*   By: jiwnam <jiwnam@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/29 02:41:08 by jiwnam            #+#    #+#             */
-/*   Updated: 2025/01/17 23:42:24 by jiwnam           ###   ########.fr       */
+/*   Updated: 2025/01/18 00:15:47 by jiwnam           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,11 @@
 # include <stdlib.h>
 # include <ft_printf.h>
 # include <libft.h>
-# include <sys/type.h>
+# include <sys/types.h>
 
 // client.c
 void	send_message(pid_t s_pid, char *msg);
 void	recv_message(int sig);
 // server.c
-
+void    recv_msg(int sig, siginfo_t *siginfo, void *context);
 #endif
