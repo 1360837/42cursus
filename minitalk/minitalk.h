@@ -6,7 +6,7 @@
 /*   By: jiwnam <jiwnam@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/29 02:41:08 by jiwnam            #+#    #+#             */
-/*   Updated: 2025/01/13 23:29:10 by jiwnam           ###   ########.fr       */
+/*   Updated: 2025/01/17 23:42:24 by jiwnam           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,8 @@
 # include <sys/type.h>
 
 // client.c
-
+void	send_message(pid_t s_pid, char *msg);
+void	recv_message(int sig);
 // server.c
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: jiwnam <jiwnam@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/02 22:39:11 by jiwnam            #+#    #+#             */
-/*   Updated: 2025/01/12 18:26:26 by jiwnam           ###   ########.fr       */
+/*   Updated: 2025/01/17 21:56:47 by jiwnam           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,23 @@
 
 int	main(void)
 {
-	int				byte_num;
-	unsigned int	c;
-	pid_t			serv_pid;
+	int					byte_num;
+	unsigned int		c;
+	struct sigaction	sa;
 
-	serv_pid = getpid();
-	ft_printf("server pid : %d",serv_pid);
+	sa.sa_sigaction = &recv_msg;
+	sa.sa_flags = SA_SIGINFO;
+	sigempty(&sa.sa_mask);
+	ft_printf("server pid : %d\n", getpid());
+	sigaction(SIGUSR1, &sa, NULL); //error 처리 할까 말까
+	sigaction(SIGUSR2, &sa, NULL);
+	while (1)
+		pause();
+	return (0);
+}
 
-}	
+void	recv_msg(int signal)
+{
+	
 
-
+}
