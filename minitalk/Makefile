@@ -50,6 +50,8 @@ $(OBJ_DIR)	:
 $(OBJ_DIR)/%.o	: %.c | $(OBJ_DIR)
 				$(CC) $(CCFLAG) -I./ft_printf -c $< -o $@
 
+bonus		: all
+
 clean		:
 				make -C $(PRINTF_DIR) clean
 				$(RM) $(RMFLAG) $(OBJ_DIR)

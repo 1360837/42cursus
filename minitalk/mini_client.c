@@ -6,7 +6,7 @@
 /*   By: jiwnam <jiwnam@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/02 19:36:47 by jiwnam            #+#    #+#             */
-/*   Updated: 2025/01/18 15:20:30 by jiwnam           ###   ########.fr       */
+/*   Updated: 2025/01/18 15:35:44 by jiwnam           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ void	send_message(pid_t s_pid, char *msg)
 				kill(s_pid, SIGUSR2);
 			else
 				kill(s_pid, SIGUSR1);
-			pause();
+			usleep(1000);
 		}
 		if (!msg[idx])
 			break ;
