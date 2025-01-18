@@ -22,7 +22,7 @@ PRINTF_FILE	= $(PRINTF_DIR)/libftprintf.a
 CC			= cc
 CCFLAG		= -Wall -Wextra -Werror
 RM			= rm
-RMFLAG		= -f
+RMFLAG		= -rf
 
 SERVER_SRC	= mini_server.c
 
@@ -33,12 +33,15 @@ CLIENT_OBJ	= $(addprefix $(OBJ_DIR)/, $(CLIENT_SRC:.c=.o))
 
 all			: $(NAME)
 
-$(NAME)		: $(PRINTF) $(OBJS) $(SERVER) $(CLIENT)
+$(NAME)		: $(SERVER) $(CLIENT)
 
-$(SERVER)	: $(SERVER_OBJ)
+$(PRINTF_FILE)	:
+			make -C $(PRINTF_DIR)
+
+$(SERVER)	: $(SERVER_OBJ) | $(PRINTF_FILE)
 				$(CC) $(CCFLAG) $^ -L./ft_printf -lftprintf -o $@ 
 
-$(CLIENT)	: $(CLIENT_OBJ)
+$(CLIENT)	: $(CLIENT_OBJ) $(PRINTF_FILE)
 				$(CC) $(CCFLAG) $^ -L./ft_printf -lftprintf -o $@ 
 
 $(OBJ_DIR)	:

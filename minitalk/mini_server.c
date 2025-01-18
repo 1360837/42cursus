@@ -6,7 +6,7 @@
 /*   By: jiwnam <jiwnam@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/02 22:39:11 by jiwnam            #+#    #+#             */
-/*   Updated: 2025/01/18 00:18:01 by jiwnam           ###   ########.fr       */
+/*   Updated: 2025/01/18 15:18:00 by jiwnam           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,6 @@ void	recv_msg(int sig, siginfo_t *siginfo, void *context)
 	static int				bit_cnt;
 
 	(void)context;
-	recv_c <<= 1;
 	recv_c |= (sig == SIGUSR1);
 	bit_cnt++;
 	if (bit_cnt == 8)
@@ -41,9 +40,14 @@ void	recv_msg(int sig, siginfo_t *siginfo, void *context)
 		if (recv_c == 0)
 			write(1, "\n", 1);
 		else
-			write(1, &recv_c, 1);
+			ft_printf("%c", recv_c);
 		bit_cnt = 0;
 		recv_c = 0;
 	}
-	kill(siginfo->si_pid, sig);
+	else
+		recv_c *=2;
+	if (sig == SIGUSR1)
+		kill(siginfo->si_pid, SIGUSR1);
+	else
+		kill(siginfo->si_pid, SIGUSR2);
 }

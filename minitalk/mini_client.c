@@ -6,7 +6,7 @@
 /*   By: jiwnam <jiwnam@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/02 19:36:47 by jiwnam            #+#    #+#             */
-/*   Updated: 2025/01/17 23:48:33 by jiwnam           ###   ########.fr       */
+/*   Updated: 2025/01/18 15:20:30 by jiwnam           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,22 +37,25 @@ void	send_message(pid_t s_pid, char *msg)
 {
 	unsigned char	cur_c;
 	int				bit;
+	int				idx;
 
-	bit = 8;
-	cur_c = 1;
-	while (cur_c)
+	idx = 0;
+	while (1)
 	{
-		cur_c = *(msg++);
+		bit = 8;
 		while (bit > 0)
 		{
 			bit--;
-			cur_c = cur_c >> 1;
+			cur_c = msg[idx] >> bit;
 			if (cur_c % 2 == 0)
 				kill(s_pid, SIGUSR2);
 			else
 				kill(s_pid, SIGUSR1);
 			pause();
 		}
+		if (!msg[idx])
+			break ;
+		idx++;
 		write(1, " ", 1);
 	}
 }
