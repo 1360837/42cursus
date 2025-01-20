@@ -6,14 +6,19 @@
 #    By: jiwnam <jiwnam@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/19 20:07:57 by jiwnam            #+#    #+#              #
-#    Updated: 2025/01/19 20:33:41 by jiwnam           ###   ########.fr        #
+#    Updated: 2025/01/20 21:20:10 by jiwnam           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME			= push_swap
+ifdef WITHBONUS
+	NAME	= checker
+	SRC		= $(BONUS_SRC)
+else
+	NAME	= push_swap
+	SRC		= $(MAN_SRC)
+endif
 
-OJB_DIR			= ./obj
-
+OBJ_DIR			= ./obj
 PRINTF_DIR		= ./ft_printf
 PRINTF_FILE		= $(PRINTF_DIR)/libftprintf.a
 
@@ -22,9 +27,11 @@ CCFLAG			= -Wall -Wextra -Werror
 RM				= rm
 RMFLAG			= -rf
 
-SRC				=
+MAN_SRC			=
 
 BONUS_SRC		=
+
+OBJ				= $(addprefix $(OBJ_DIR), $(SRC:.c=.o))
 
 all				: $(NAME)
 
@@ -50,4 +57,7 @@ fclean			: clean
 
 re				: fclean all
 
-.PHONY			: all clean fclean re
+bonus			:
+				@make --no-print-directory WITHBONUS=1 all
+
+.PHONY			: all clean fclean re bonus

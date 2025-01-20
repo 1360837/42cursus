@@ -6,7 +6,7 @@
 #    By: jiwnam <jiwnam@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/18 17:34:57 by jiwnam            #+#    #+#              #
-#    Updated: 2025/01/18 18:27:35 by jiwnam           ###   ########.fr        #
+#    Updated: 2025/01/20 20:31:22 by jiwnam           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,10 +25,9 @@ RMFLAG			= -rf
 SRC				= 
 
 OBJ				= $(SRC:.c=.o)
-				$(CC) $(CCFLAG) $^ -I./ft_printf -c $< -o $@
 
 $(OBJ_DIR)/%.o	: %.c | $(OBJ_DIR)
-				$(CC) $(CCFLAG) -c 
+				$(CC) $(CCFLAG)  -I./ft_printf -c $< -o $@
 
 all				: $(NAME)
 
