@@ -1,37 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   swap.c                                             :+:      :+:    :+:   */
+/*   ft_strlcat.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jiwnam <jiwnam@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/20 21:38:43 by jiwnam            #+#    #+#             */
-/*   Updated: 2025/01/21 22:05:34 by jiwnam           ###   ########.fr       */
+/*   Created: 2024/10/12 15:04:06 by jiwnam            #+#    #+#             */
+/*   Updated: 2024/10/12 15:16:33 by jiwnam           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "libft.h"
 
-void	sa(int **a)
+size_t	ft_strlcat(char *dst, const char *src, size_t size)
 {
-	int	tmp;
+	size_t	idx;
+	size_t	dst_len;
+	size_t	src_len;
 
-	tmp = (*a)[0];
-	(*a)[0] = (*a)[1];
-	(*a)[1] = tmp;
-}
-
-void	sb(int **b)
-{
-	int	tmp;
-
-	tmp = (*b)[0];
-	(*b)[0] = (*b)[1];
-	(*b)[1] = tmp;
-}
-
-void	ss(int **a, int **b)
-{
-	sa(a);
-	sb(b);
+	idx = 0;
+	dst_len = ft_strlen(dst);
+	src_len = ft_strlen(src);
+	if (size <= dst_len)
+		return (size + src_len);
+	while (idx + 1 < size - dst_len && *(src + idx))
+	{
+		*(dst + (dst_len + idx)) = *(src + idx);
+		idx++;
+	}
+	*(dst + (dst_len + idx)) = '\0';
+	return (dst_len + src_len);
 }

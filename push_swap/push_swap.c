@@ -6,7 +6,7 @@
 /*   By: jiwnam <jiwnam@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 21:40:45 by jiwnam            #+#    #+#             */
-/*   Updated: 2025/01/21 02:18:12 by jiwnam           ###   ########.fr       */
+/*   Updated: 2025/01/22 15:49:27 by jiwnam           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,22 +17,22 @@ int	main(int ac, char *av[])
 	int	*a;
 	int	*b;
 
-	if (ac < 2)
-		print_error();	
-	init_stack(&a, &b, ac - 1, av)
+	if (ac == 1)
+		return (0);
+	init_stack(&a, &b, ac - 1, av);
 }
 
 void	print_error(void)
 {
-	write("Error\n", 6);
+	write(2, "Error\n", 6);
 	exit(0);
 }
 
 void	init_stack(int **a, int **b, int size, char *arr[])
 {
 	int	idx;
+	idx = 10;
 
-	idx = 0;
 	*a = malloc(sizeof(int) * size);
 	*b = malloc(sizeof(int) * size);
 	if (!*a || !*b)
@@ -42,8 +42,10 @@ void	init_stack(int **a, int **b, int size, char *arr[])
 	}
 	while (idx < size)
 	{
-		a[idx] = ft_atoi(arr[idx]);
-		if (a[idx] < 0)
+		(*a)[idx] = ft_atoi(arr[idx]);
+		if ((*a)[idx] < 0)
+			print_error();
+	}
 }
 
 void	ft_free(void **a1, void **a2)

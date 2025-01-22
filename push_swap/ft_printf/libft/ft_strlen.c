@@ -1,37 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   swap.c                                             :+:      :+:    :+:   */
+/*   ft_strlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jiwnam <jiwnam@student.42.fr>              +#+  +:+       +#+        */
+/*   By: jiwnam <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/20 21:38:43 by jiwnam            #+#    #+#             */
-/*   Updated: 2025/01/21 22:05:34 by jiwnam           ###   ########.fr       */
+/*   Created: 2024/10/02 19:17:57 by jiwnam            #+#    #+#             */
+/*   Updated: 2024/10/15 16:57:59 by jiwnam           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "libft.h"
 
-void	sa(int **a)
+size_t	ft_strlen(const char *str)
 {
-	int	tmp;
+	size_t	len;
 
-	tmp = (*a)[0];
-	(*a)[0] = (*a)[1];
-	(*a)[1] = tmp;
-}
-
-void	sb(int **b)
-{
-	int	tmp;
-
-	tmp = (*b)[0];
-	(*b)[0] = (*b)[1];
-	(*b)[1] = tmp;
-}
-
-void	ss(int **a, int **b)
-{
-	sa(a);
-	sb(b);
+	len = 0;
+	while (str[len])
+		len++;
+	return (len);
 }

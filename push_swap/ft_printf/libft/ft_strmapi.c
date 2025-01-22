@@ -1,37 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   swap.c                                             :+:      :+:    :+:   */
+/*   ft_strmapi.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jiwnam <jiwnam@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/20 21:38:43 by jiwnam            #+#    #+#             */
-/*   Updated: 2025/01/21 22:05:34 by jiwnam           ###   ########.fr       */
+/*   Created: 2024/10/15 21:47:52 by jiwnam            #+#    #+#             */
+/*   Updated: 2024/10/15 22:06:46 by jiwnam           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "libft.h"
+#include <stdlib.h>
 
-void	sa(int **a)
+char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 {
-	int	tmp;
+	char	*result;
+	size_t	s_len;
+	size_t	idx;
 
-	tmp = (*a)[0];
-	(*a)[0] = (*a)[1];
-	(*a)[1] = tmp;
-}
-
-void	sb(int **b)
-{
-	int	tmp;
-
-	tmp = (*b)[0];
-	(*b)[0] = (*b)[1];
-	(*b)[1] = tmp;
-}
-
-void	ss(int **a, int **b)
-{
-	sa(a);
-	sb(b);
+	s_len = ft_strlen(s);
+	result = malloc(s_len + 1);
+	if (!result)
+		return (result);
+	idx = 0;
+	while (idx < s_len)
+	{
+		result[idx] = f(idx, s[idx]);
+		idx++;
+	}
+	result[idx] = '\0';
+	return (result);
 }

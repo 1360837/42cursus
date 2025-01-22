@@ -1,37 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   swap.c                                             :+:      :+:    :+:   */
+/*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jiwnam <jiwnam@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/20 21:38:43 by jiwnam            #+#    #+#             */
-/*   Updated: 2025/01/21 22:05:34 by jiwnam           ###   ########.fr       */
+/*   Created: 2024/10/15 15:40:45 by jiwnam            #+#    #+#             */
+/*   Updated: 2024/10/15 15:52:01 by jiwnam           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "libft.h"
+#include <stdlib.h>
 
-void	sa(int **a)
+char	*ft_strjoin(char const *s1, char const *s2)
 {
-	int	tmp;
+	char	*new;
+	size_t	size;
+	size_t	idx;
 
-	tmp = (*a)[0];
-	(*a)[0] = (*a)[1];
-	(*a)[1] = tmp;
-}
-
-void	sb(int **b)
-{
-	int	tmp;
-
-	tmp = (*b)[0];
-	(*b)[0] = (*b)[1];
-	(*b)[1] = tmp;
-}
-
-void	ss(int **a, int **b)
-{
-	sa(a);
-	sb(b);
+	size = ft_strlen(s1) + ft_strlen(s2);
+	new = malloc(size + 1);
+	if (new == NULL)
+		return (new);
+	idx = 0;
+	while (*s1)
+		*(new + idx++) = *(s1++);
+	while (*s2)
+		*(new + idx++) = *(s2++);
+	*(new + idx) = '\0';
+	return (new);
 }

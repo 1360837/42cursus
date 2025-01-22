@@ -1,37 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   swap.c                                             :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jiwnam <jiwnam@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/20 21:38:43 by jiwnam            #+#    #+#             */
-/*   Updated: 2025/01/21 22:05:34 by jiwnam           ###   ########.fr       */
+/*   Created: 2024/10/15 00:26:31 by jiwnam            #+#    #+#             */
+/*   Updated: 2024/10/15 00:44:22 by jiwnam           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "libft.h"
+#include <stdlib.h>
 
-void	sa(int **a)
+char	*ft_strdup(const char *s)
 {
-	int	tmp;
+	char	*new;
+	size_t	s_len;
+	size_t	idx;
 
-	tmp = (*a)[0];
-	(*a)[0] = (*a)[1];
-	(*a)[1] = tmp;
-}
-
-void	sb(int **b)
-{
-	int	tmp;
-
-	tmp = (*b)[0];
-	(*b)[0] = (*b)[1];
-	(*b)[1] = tmp;
-}
-
-void	ss(int **a, int **b)
-{
-	sa(a);
-	sb(b);
+	idx = 0;
+	s_len = ft_strlen(s);
+	new = malloc(s_len + 1);
+	if (new == NULL)
+		return (new);
+	while (*s)
+		*(new + idx++) = *(s++);
+	*(new + idx) = '\0';
+	return (new);
 }

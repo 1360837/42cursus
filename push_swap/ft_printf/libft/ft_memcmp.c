@@ -1,37 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   swap.c                                             :+:      :+:    :+:   */
+/*   ft_memcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jiwnam <jiwnam@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/20 21:38:43 by jiwnam            #+#    #+#             */
-/*   Updated: 2025/01/21 22:05:34 by jiwnam           ###   ########.fr       */
+/*   Created: 2024/10/12 17:32:31 by jiwnam            #+#    #+#             */
+/*   Updated: 2024/10/12 17:42:05 by jiwnam           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "libft.h"
 
-void	sa(int **a)
+int	ft_memcmp(const void *s1, const void *s2, size_t n)
 {
-	int	tmp;
+	unsigned char	*s1_buf;
+	unsigned char	*s2_buf;
+	size_t			idx;
 
-	tmp = (*a)[0];
-	(*a)[0] = (*a)[1];
-	(*a)[1] = tmp;
-}
-
-void	sb(int **b)
-{
-	int	tmp;
-
-	tmp = (*b)[0];
-	(*b)[0] = (*b)[1];
-	(*b)[1] = tmp;
-}
-
-void	ss(int **a, int **b)
-{
-	sa(a);
-	sb(b);
+	if (n == 0)
+		return (0);
+	idx = 0;
+	s1_buf = (unsigned char *)s1;
+	s2_buf = (unsigned char *)s2;
+	while (idx < n)
+	{
+		if (*(s1_buf + idx) != *(s2_buf + idx))
+			return (*(s1_buf + idx) - *(s2_buf + idx));
+		idx++;
+	}
+	return (0);
 }

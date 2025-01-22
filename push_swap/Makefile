@@ -6,7 +6,7 @@
 #    By: jiwnam <jiwnam@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/19 20:07:57 by jiwnam            #+#    #+#              #
-#    Updated: 2025/01/20 21:20:10 by jiwnam           ###   ########.fr        #
+#    Updated: 2025/01/22 15:44:19 by jiwnam           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,11 +27,12 @@ CCFLAG			= -Wall -Wextra -Werror
 RM				= rm
 RMFLAG			= -rf
 
-MAN_SRC			=
+MAN_SRC			= push_swap.c		\
+				  swap.c			
 
 BONUS_SRC		=
 
-OBJ				= $(addprefix $(OBJ_DIR), $(SRC:.c=.o))
+OBJ				= $(addprefix $(OBJ_DIR)/, $(SRC:.c=.o))
 
 all				: $(NAME)
 
@@ -45,10 +46,10 @@ $(OBJ_DIR)/%.o	: %.c | $(OBJ_DIR)
 					$(CC) $(CCFLAG) -I./ft_printf -c $< -o $@
 
 $(PRINTF_FILE)	:
-					make -C $(PRINTF_DIR)
+					make -s -C $(PRINTF_DIR)
 
 clean			:
-					make -C $(PRINTF_DIR) clean
+					make -s -C $(PRINTF_DIR) clean
 					$(RM) $(RMFLAG) $(OBJ_DIR)
 
 fclean			: clean

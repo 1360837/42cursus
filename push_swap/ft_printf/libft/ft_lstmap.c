@@ -1,31 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.h                                        :+:      :+:    :+:   */
+/*   ft_lstmap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jiwnam <jiwnam@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/20 21:26:17 by jiwnam            #+#    #+#             */
-/*   Updated: 2025/01/22 15:47:39 by jiwnam           ###   ########.fr       */
+/*   Created: 2024/10/16 00:40:30 by jiwnam            #+#    #+#             */
+/*   Updated: 2024/10/16 14:09:01 by jiwnam           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PUSH_SWAP_H
-# define PUSH_SWAP_H
-
-#include <ft_printf.h>
-#include <libft.h>
-#include <stdio.h>
+#include "libft.h"
 #include <stdlib.h>
-#include <unistd.h>
 
-//push_swap.c
-void	print_error(void);
-void	init_stack(int **a, int **b, int size, char *arr[]);
-void	ft_free(void **a1, void **a2);
+t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
+{
+	void	*cont_buf;
+	t_list	*new;
+	t_list	*newnode;
 
-//swap.c
-void	sa(int **a); void  sb(int **b);
-void	ss(int **a, int **b);
-
-#endif
+	new = NULL;
+	while (lst)
+	{
+		cont_buf = f(lst->content);
+		newnode = ft_lstnew(cont_buf);
+		if (!newnode)
+		{
+			del(cont_buf);
+			ft_lstclear(&new, del);
+			return (NULL);
+		}
+		ft_lstadd_back(&new, newnode);
+		lst = lst->next;
+	}
+	newnode = NULL;
+	return (new);
+}

@@ -1,37 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   swap.c                                             :+:      :+:    :+:   */
+/*   ft_isalpha.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jiwnam <jiwnam@student.42.fr>              +#+  +:+       +#+        */
+/*   By: jiwnam <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/20 21:38:43 by jiwnam            #+#    #+#             */
-/*   Updated: 2025/01/21 22:05:34 by jiwnam           ###   ########.fr       */
+/*   Created: 2024/10/02 16:16:35 by jiwnam            #+#    #+#             */
+/*   Updated: 2024/10/09 13:58:32 by jiwnam           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
-
-void	sa(int **a)
+static int	ft_isupper(int c)
 {
-	int	tmp;
-
-	tmp = (*a)[0];
-	(*a)[0] = (*a)[1];
-	(*a)[1] = tmp;
+	return (c >= 'A' && c <= 'Z');
 }
 
-void	sb(int **b)
+static int	ft_islower(int c)
 {
-	int	tmp;
-
-	tmp = (*b)[0];
-	(*b)[0] = (*b)[1];
-	(*b)[1] = tmp;
+	return (c >= 'a' && c <= 'z');
 }
 
-void	ss(int **a, int **b)
+int	ft_isalpha(int c)
 {
-	sa(a);
-	sb(b);
-}
+	return (ft_isupper(c) || ft_islower(c));
+}	
