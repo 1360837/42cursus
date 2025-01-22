@@ -53,7 +53,7 @@ clean			:
 					$(RM) $(RMFLAG) $(OBJ_DIR)
 
 fclean			: clean
-					$(RM) $(RMFLAG) $(PRINTF_FILE)
+					make -s -C $(PRINTF_DIR) fclean
 					$(RM) $(RMFLAG) $(NAME)
 
 re				: fclean all
