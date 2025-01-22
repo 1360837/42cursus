@@ -6,7 +6,7 @@
 /*   By: jiwnam <jiwnam@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 21:40:45 by jiwnam            #+#    #+#             */
-/*   Updated: 2025/01/22 15:49:27 by jiwnam           ###   ########.fr       */
+/*   Updated: 2025/01/22 19:55:40 by jiwnam           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,8 @@ void	print_error(void)
 void	init_stack(int **a, int **b, int size, char *arr[])
 {
 	int	idx;
-	idx = 10;
-
+	
+	idx = 0;
 	*a = malloc(sizeof(int) * size);
 	*b = malloc(sizeof(int) * size);
 	if (!*a || !*b)
