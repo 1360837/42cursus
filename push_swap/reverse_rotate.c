@@ -6,24 +6,24 @@
 /*   By: jiwnam <jiwnam@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/25 17:56:08 by jiwnam            #+#    #+#             */
-/*   Updated: 2025/01/25 19:40:11 by jiwnam           ###   ########.fr       */
+/*   Updated: 2025/01/25 20:49:25 by jiwnam           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void    rra(int **a)
+void	rra(t_stack *a)
 {
 
 }
 
-void    rrb(int **b)
+void	rrb(t_stack *b)
 {
 
 }
 
-void    rrr(int **a, int **b)
+void	rrr(t_stack *a, t_stack *b)
 {
-    rra(a);
-    rrb(b);
+	ra(a);
+	rb(b);
 }
