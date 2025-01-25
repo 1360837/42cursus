@@ -6,7 +6,7 @@
 /*   By: jiwnam <jiwnam@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 21:40:45 by jiwnam            #+#    #+#             */
-/*   Updated: 2025/01/25 20:55:36 by jiwnam           ###   ########.fr       */
+/*   Updated: 2025/01/25 20:56:52 by jiwnam           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@ int	main(int ac, char *av[])
 
 	if (ac == 1)
 		return (0);
-	init_stack(&a, &b, ac - 1, av);
 }
 
 void	print_error(void)
