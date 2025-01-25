@@ -1,29 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   swap.c                                             :+:      :+:    :+:   */
+/*   reverse_rotate.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jiwnam <jiwnam@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/20 21:38:43 by jiwnam            #+#    #+#             */
-/*   Updated: 2025/01/25 19:40:14 by jiwnam           ###   ########.fr       */
+/*   Created: 2025/01/25 17:56:08 by jiwnam            #+#    #+#             */
+/*   Updated: 2025/01/25 19:40:11 by jiwnam           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	sa(t_stack *a)
+void    rra(int **a)
 {
 
 }
 
-void	sb(int **b)
+void    rrb(int **b)
 {
 
 }
 
-void	ss(int **a, int **b)
+void    rrr(int **a, int **b)
 {
-	sa(a);
-	sb(b);
+    rra(a);
+    rrb(b);
 }

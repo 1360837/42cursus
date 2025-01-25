@@ -6,7 +6,7 @@
 #    By: jiwnam <jiwnam@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/19 20:07:57 by jiwnam            #+#    #+#              #
-#    Updated: 2025/01/23 19:25:06 by jiwnam           ###   ########.fr        #
+#    Updated: 2025/01/25 19:40:59 by jiwnam           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,7 +28,11 @@ RM				= rm
 RMFLAG			= -rf
 
 MAN_SRC			= push_swap.c		\
-				  swap.c			
+				  swap.c			\
+				  push.c			\
+				  rotate.c			\
+				  reverse_rotate.c	\
+				  stack.c
 
 BONUS_SRC		=
 
@@ -40,20 +44,20 @@ $(NAME)			: $(OBJ) | $(PRINTF_FILE)
 					$(CC) $(CCFLAG) $^ -L./ft_printf -lftprintf -o $@
 
 $(OBJ_DIR)		:
-					mkdir -p $(OBJ_DIR)
+					@mkdir -p $(OBJ_DIR)
 
 $(OBJ_DIR)/%.o	: %.c | $(OBJ_DIR)
 					$(CC) $(CCFLAG) -I./ft_printf -c $< -o $@
 
 $(PRINTF_FILE)	:
-					make -s -C $(PRINTF_DIR)
+					@make -s -C $(PRINTF_DIR)
 
 clean			:
-					make -s -C $(PRINTF_DIR) clean
+					@make -s -C $(PRINTF_DIR) clean
 					$(RM) $(RMFLAG) $(OBJ_DIR)
 
 fclean			: clean
-					make -s -C $(PRINTF_DIR) fclean
+					@make -s -C $(PRINTF_DIR) fclean
 					$(RM) $(RMFLAG) $(NAME)
 
 re				: fclean all
