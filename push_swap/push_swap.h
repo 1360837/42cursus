@@ -6,7 +6,7 @@
 /*   By: jiwnam <jiwnam@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 21:26:17 by jiwnam            #+#    #+#             */
-/*   Updated: 2025/01/31 15:47:52 by jiwnam           ###   ########.fr       */
+/*   Updated: 2025/01/31 15:51:33 by jiwnam           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,11 +27,12 @@ typedef struct s_stack
 
 //push_swap.c
 void	push_swap(t_stack *a, t_stack *b);
+int		is_error(int ac, char **av);
 
 //push_swap_utils.c
 void	print_error(void);
 void	ft_free(void **a1, void **a2);
-int	is_num(char *str);
+int		is_num(char *str);
 
 //swap.c
 void	sa(t_stack *a);

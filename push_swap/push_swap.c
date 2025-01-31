@@ -6,7 +6,7 @@
 /*   By: jiwnam <jiwnam@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 21:40:45 by jiwnam            #+#    #+#             */
-/*   Updated: 2025/01/31 15:45:08 by jiwnam           ###   ########.fr       */
+/*   Updated: 2025/01/31 15:51:09 by jiwnam           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,10 +23,10 @@ int	main(int ac, char *av[])
 	init_stack(a, ac - 1);
 	init_stack(b, ac - 1);
 	idx = 0;
+	if (is_error(ac, av))
+		print_error();
 	while (idx < ac)
 	{
-		if (!is_num(av[idx + 1]))
-			print_error();
 		a->stack[idx] = ft_atoi(av[idx + 1]);
 		idx++;
 	}
@@ -48,3 +48,7 @@ void	push_swap(t_stack *a, t_stack *b)
 	return ;
 }
 
+int	is_error(int ac, char **av)
+{
+
+}
