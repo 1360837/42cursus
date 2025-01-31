@@ -6,7 +6,7 @@
 #    By: jiwnam <jiwnam@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/19 20:07:57 by jiwnam            #+#    #+#              #
-#    Updated: 2025/01/25 19:52:41 by jiwnam           ###   ########.fr        #
+#    Updated: 2025/01/31 15:46:31 by jiwnam           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,6 +28,7 @@ RM				= rm
 RMFLAG			= -rf
 
 MAN_SRC			= push_swap.c		\
+				  push_swap_utils.c	\
 				  swap.c			\
 				  push.c			\
 				  rotate.c			\
