@@ -6,7 +6,7 @@
 /*   By: jiwnam <jiwnam@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 21:40:45 by jiwnam            #+#    #+#             */
-/*   Updated: 2025/01/31 15:51:09 by jiwnam           ###   ########.fr       */
+/*   Updated: 2025/01/31 17:45:33 by jiwnam           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,20 +16,14 @@ int	main(int ac, char *av[])
 {
 	static t_stack	*a;
 	static t_stack	*b;
-	int		idx;
 
 	if (ac == 1)
 		return (0);
 	init_stack(a, ac - 1);
 	init_stack(b, ac - 1);
-	idx = 0;
 	if (is_error(ac, av))
 		print_error();
-	while (idx < ac)
-	{
-		a->stack[idx] = ft_atoi(av[idx + 1]);
-		idx++;
-	}
+
 	push_swap(a, b);
 }
 
@@ -48,7 +42,21 @@ void	push_swap(t_stack *a, t_stack *b)
 	return ;
 }
 
-int	is_error(int ac, char **av)
+int	count_nums(char **av)
 {
+	int	cnt;
 
+	cnt = 0;
+	while (*av)
+	{
+		if (is_num(*av))
+		{
+			cnt ++;
+			av++;
+		}
+		else
+		{
+			// split이나 다른거 적용해보기
+		}
+	}
 }
