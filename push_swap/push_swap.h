@@ -6,7 +6,7 @@
 /*   By: jiwnam <jiwnam@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 21:26:17 by jiwnam            #+#    #+#             */
-/*   Updated: 2025/01/31 15:22:42 by jiwnam           ###   ########.fr       */
+/*   Updated: 2025/01/31 15:31:12 by jiwnam           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,23 +31,23 @@ int		is_sorted(t_stack *a);
 void	ft_free(void **a1, void **a2);
 
 //swap.c
-void	sa(int **a);
-void	sb(int **b);
-void	ss(int **a, int **b);
+void	sa(t_stack *a);
+void	sb(t_stack *b);
+void	ss(t_stack *a, t_stack *b);
 
 //push.c
-void	pa(int **a);
-void	pb(int **b);
+void	pa(t_stack *a, t_stack *b);
+void	pb(t_stack *a, t_stack *b);
 
 //rotate.c
-void	ra(int **a);
-void	rb(int **a);
-void	rr(int **a, int **b);
+void	ra(t_stack *a);
+void	rb(t_stack *b);
+void	rr(t_stack *a, t_stack *b);
 
 //reverse_rotate.c
-void	rra(int **a);
-void	rrb(int **b);
-void	rrr(int **a, int **b);
+void	rra(t_stack *a);
+void	rrb(t_stack *b);
+void	rrr(t_stack *a, t_stack *b);
 
 //stack.c
 void	init_stack(t_stack *st, int size);
