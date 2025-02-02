@@ -6,26 +6,31 @@
 /*   By: jiwnam <jiwnam@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/25 18:03:03 by jiwnam            #+#    #+#             */
-/*   Updated: 2025/01/31 17:42:09 by jiwnam           ###   ########.fr       */
+/*   Updated: 2025/02/02 20:36:02 by jiwnam           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	init_stack(t_stack *st, int size)
+t_stack	*init_stack(int size)
 {
-	int	idx;
+	t_stack	*st;
+	int		idx;
 
 	st = malloc(sizeof(t_stack));
 	if (!st)
-		return (print_error());
+		return (NULL);
 	st->top = -1;
 	st->stack = malloc(sizeof(int) * size);
 	if (!st->stack)
-		return (print_error());
+	{
+		free(st);
+		return (NULL);
+	}
 	idx = 0;
 	while (idx < size)
-		st->stack[idx] = 0;
+		st->stack[idx++] = 0;
+	return (st);
 }
 
 void	push(t_stack *st, int data)
