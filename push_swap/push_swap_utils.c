@@ -6,19 +6,13 @@
 /*   By: jiwnam <jiwnam@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/31 15:38:35 by jiwnam            #+#    #+#             */
-/*   Updated: 2025/01/31 15:44:30 by jiwnam           ###   ########.fr       */
+/*   Updated: 2025/02/02 16:45:01 by jiwnam           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	print_error(void)
-{
-	write(2, "Error\n", 6);
-	exit(0);
-}
-
-void	ft_free(void **a1, void **a2)
+void	print_error(void **a1, void **a2)
 {
 	if (a1 && *a1)
 	{
@@ -30,10 +24,14 @@ void	ft_free(void **a1, void **a2)
 		free(*a2);
 		*a2 = NULL;
 	}
+	write(2, "Error\n", 6);
+	exit(0);
 }
 
 int	is_num(char *str)
 {
+	if (*str == '+' || *str == '-')
+		str++;
 	while (*str)
 	{
 		if (*str < '0' || *str > '9')
