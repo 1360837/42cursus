@@ -6,7 +6,7 @@
 /*   By: jiwnam <jiwnam@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/31 15:38:35 by jiwnam            #+#    #+#             */
-/*   Updated: 2025/02/02 21:29:47 by jiwnam           ###   ########.fr       */
+/*   Updated: 2025/02/02 22:02:06 by jiwnam           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,11 @@
 
 int	*make_arr(char *av[], int size)
 {
-	int		idx;
-	int		*arr;
-	char	**str_tmp;
+	static int	idx;
+	int			str_idx;
+	int			*arr;
+	char		**str_tmp;
 
-	idx = 0;
 	arr = malloc(sizeof(int) * size);
 	if (!arr)
 		return (NULL);
@@ -27,11 +27,12 @@ int	*make_arr(char *av[], int size)
 		str_tmp = ft_split(*av, ' ');
 		if (!str_tmp)
 			print_error((void **)&arr, NULL);
-		while (*str_tmp)
+		str_idx = 0;
+		while (str_tmp[str_idx])
 		{
 			if (!is_num(*str_tmp))
 				print_error((void **)&arr, (void **)str_tmp);
-			arr[idx++] = ft_atoi(*str_tmp);
+			arr[idx++] = ft_atoi(str_tmp[str_idx++]);
 		}
 		tmp_free(str_tmp);
 		av++;

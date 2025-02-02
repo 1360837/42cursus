@@ -6,7 +6,7 @@
 /*   By: jiwnam <jiwnam@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/02 21:33:13 by jiwnam            #+#    #+#             */
-/*   Updated: 2025/02/02 21:35:40 by jiwnam           ###   ########.fr       */
+/*   Updated: 2025/02/02 22:03:06 by jiwnam           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,9 @@ int	main(int ac, char *av[])
 
 	if (ac == 1)
 		return (0);
-	while (*(av[idx]))
+	while (idx < ac)
 		cnt += count_nums(av[idx++]);
-	tmp_arr = make_arr(av, cnt);
+	tmp_arr = make_arr(av + 1, cnt);
 	if (!tmp_arr)
 		print_error(NULL, NULL);
 	a = init_stack(cnt);
@@ -35,11 +35,5 @@ int	main(int ac, char *av[])
 	b = init_stack(cnt);
 	if (!b)
 		print_error((void **)&a, NULL);
-	int i = 0;
-	while (i < a->top)
-	{
-		printf("%d ", a->stack[i]);
-		i++;
-	}
-	//push_swap(a, b);
+	push_swap(a, b);
 }
