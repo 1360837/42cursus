@@ -6,7 +6,7 @@
 /*   By: jiwnam <jiwnam@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/15 17:38:48 by jiwnam            #+#    #+#             */
-/*   Updated: 2024/10/16 14:37:18 by jiwnam           ###   ########.fr       */
+/*   Updated: 2025/02/02 21:19:18 by jiwnam           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ static char	**make_result(char *s, char c)
 	return (result);
 }
 
-char	**result_free(char **arr, size_t end_idx)
+static char	**result_free(char **arr, size_t end_idx)
 {
 	size_t	idx;
 

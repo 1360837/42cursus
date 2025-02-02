@@ -6,26 +6,61 @@
 /*   By: jiwnam <jiwnam@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/31 15:38:35 by jiwnam            #+#    #+#             */
-/*   Updated: 2025/02/02 16:45:01 by jiwnam           ###   ########.fr       */
+/*   Updated: 2025/02/02 21:29:47 by jiwnam           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	print_error(void **a1, void **a2)
+int	*make_arr(char *av[], int size)
 {
-	if (a1 && *a1)
+	int		idx;
+	int		*arr;
+	char	**str_tmp;
+
+	idx = 0;
+	arr = malloc(sizeof(int) * size);
+	if (!arr)
+		return (NULL);
+	while (*av)
 	{
-		free(*a1);
-		*a1 = NULL;
+		str_tmp = ft_split(*av, ' ');
+		if (!str_tmp)
+			print_error((void **)&arr, NULL);
+		while (*str_tmp)
+		{
+			if (!is_num(*str_tmp))
+				print_error((void **)&arr, (void **)str_tmp);
+			arr[idx++] = ft_atoi(*str_tmp);
+		}
+		tmp_free(str_tmp);
+		av++;
 	}
-	if (a1 && *a1)
+	return (arr);
+}
+
+void	stack_value(int *arr, t_stack *st, int size)
+{
+	int	i;
+	int	j;
+	int	num;
+
+	i = 0;
+	while (i < size)
 	{
-		free(*a2);
-		*a2 = NULL;
+		j = 0;
+		num = 0;
+		while (j < size)
+		{
+			if (arr[j] < arr[i])
+				num++;
+			else if (j != i && arr[j] == arr[i])
+				print_error((void **)&arr, (void **)&st);
+			j++;
+		}
+		push(st, num);
+		i++;
 	}
-	write(2, "Error\n", 6);
-	exit(0);
 }
 
 int	is_num(char *str)
@@ -39,4 +74,35 @@ int	is_num(char *str)
 		str++;
 	}
 	return (1);
+}
+
+void	tmp_free(char **arr)
+{
+	size_t	idx;
+
+	idx = 0;
+	while (arr[idx])
+		free(arr[idx++]);
+	free(arr);
+}
+
+int	count_nums(char *str)
+{
+	int	cnt;
+	int	flag;
+
+	cnt = 0;
+	flag = 0;
+	while (*str)
+	{
+		if (*str != ' ' && flag == 0)
+		{
+			flag = 1;
+			cnt++;
+		}
+		else if (*str == ' ')
+			flag = 0;
+		str++;
+	}
+	return (cnt);
 }

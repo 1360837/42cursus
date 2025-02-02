@@ -6,7 +6,7 @@
 /*   By: jiwnam <jiwnam@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 21:40:45 by jiwnam            #+#    #+#             */
-/*   Updated: 2025/02/02 20:35:17 by jiwnam           ###   ########.fr       */
+/*   Updated: 2025/02/02 21:30:06 by jiwnam           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,54 +24,43 @@ int	main(int ac, char *av[])
 		return (0);
 	while (*(av[idx]))
 		cnt += count_nums(av[idx++]);
-	tmp_arr = malloc(sizeof(int) * cnt);
+	tmp_arr = make_arr(av, cnt);
 	if (!tmp_arr)
+		print_error(NULL, NULL);
 	a = init_stack(cnt);
 	if (!a)
 		print_error((void **)&tmp_arr, NULL);
-	// a에 값 넣어주기
+	stack_value(tmp_arr, a, cnt);
 	free(tmp_arr);
 	b = init_stack(cnt);
 	if (!b)
 		print_error((void **)&a, NULL);
-
 	push_swap(a, b);
 }
 
 void	push_swap(t_stack *a, t_stack *b)
 {
-	if (is_sorted(a) && is_empty(b))
-		return ;
 	while (1)
 	{
-		if (is_empty(a) && is_sorted(b))
-			break ;
-		// a에서 제일 작은수를 찾아서 pb
+		if (is_sorted(a) && is_empty(b))
+			return ;
+		// radix sort
 	}
-	while (!is_empty(b))
-		pa(a, b);
 	return ;
 }
 
-int	count_nums(char *str)
+void	print_error(void **a1, void **a2)
 {
-	int	cnt;
-	int	flag;
-
-	cnt = 0;
-	flag = 0;
-	while (*str)
+	if (a1 && *a1)
 	{
-		if (!is_num(str))
-			print_error(NULL, NULL);
-		if (*str != ' ' && flag == 0)
-		{
-			flag = 1;
-			cnt++;
-		}
-		else if (*str == ' ')
-			flag = 0;
-		str++;
+		free(*a1);
+		*a1 = NULL;
 	}
-	return (cnt);
+	if (a1 && *a1)
+	{
+		free(*a2);
+		*a2 = NULL;
+	}
+	write(2, "Error\n", 6);
+	exit(0);
 }
