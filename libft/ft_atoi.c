@@ -6,7 +6,7 @@
 /*   By: jiwnam <jiwnam@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 22:59:04 by jiwnam            #+#    #+#             */
-/*   Updated: 2025/02/02 16:31:44 by jiwnam           ###   ########.fr       */
+/*   Updated: 2025/02/02 16:38:08 by jiwnam           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,10 +34,12 @@ int	ft_atoi(const char *nptr)
 	sign = 1;
 	while (is_space(*(nptr + idx)))
 		idx++;
-	if (*(nptr + idx) == '-')
-		sign *= -1;
-	if (*(nptr + idx) == '-' || *(nptr + idx) == '+')
+	while (*(nptr + idx) == '-' || *(nptr + idx == '+'))
+	{
+		if (*(nptr + idx) == '-')
+			sign *= -1;
 		idx++;
+	}
 	while (is_num(*(nptr + idx)))
 	{
 		num = (num * 10) + (*((char *)nptr + idx) - '0');
