@@ -6,7 +6,7 @@
 #    By: jiwnam <jiwnam@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/19 20:07:57 by jiwnam            #+#    #+#              #
-#    Updated: 2025/01/31 17:42:06 by jiwnam           ###   ########.fr        #
+#    Updated: 2025/02/02 21:32:53 by jiwnam           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,7 +27,8 @@ CCFLAG			= -Wall -Wextra -Werror
 RM				= rm
 RMFLAG			= -rf
 
-MAN_SRC			= push_swap.c		\
+MAN_SRC			= main.c			\
+				  push_swap.c		\
 				  push_swap_utils.c	\
 				  swap.c			\
 				  push.c			\
