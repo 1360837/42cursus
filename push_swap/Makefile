@@ -6,7 +6,7 @@
 #    By: jiwnam <jiwnam@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/19 20:07:57 by jiwnam            #+#    #+#              #
-#    Updated: 2025/02/02 21:32:53 by jiwnam           ###   ########.fr        #
+#    Updated: 2025/02/02 21:54:10 by jiwnam           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,7 +23,7 @@ PRINTF_DIR		= ./ft_printf
 PRINTF_FILE		= $(PRINTF_DIR)/libftprintf.a
 
 CC				= cc
-CCFLAG			= -Wall -Wextra -Werror
+CCFLAG			= -Wall -Wextra -Werror -g
 RM				= rm
 RMFLAG			= -rf
 
