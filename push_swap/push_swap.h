@@ -6,7 +6,7 @@
 /*   By: jiwnam <jiwnam@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 21:26:17 by jiwnam            #+#    #+#             */
-/*   Updated: 2025/02/02 21:30:07 by jiwnam           ###   ########.fr       */
+/*   Updated: 2025/02/03 17:24:07 by jiwnam           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,8 @@ typedef struct s_stack
 
 //push_swap.c
 void	push_swap(t_stack *a, t_stack *b);
+void	radix_sort(t_stack *a, t_stack *b);
+int		find_digit(int size, int radix);
 void	print_error(void **a1, void **a2);
 
 //push_swap_utils.c
@@ -60,6 +62,6 @@ t_stack	*init_stack(int size);
 void	push(t_stack *st, int data);
 int		pop(t_stack *st);
 int		is_empty(t_stack *st);
-int		is_sorted(t_stack *a);
+int		is_sorted(t_stack *a, int ascending);
 
 #endif

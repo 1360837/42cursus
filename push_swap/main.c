@@ -6,7 +6,7 @@
 /*   By: jiwnam <jiwnam@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/02 21:33:13 by jiwnam            #+#    #+#             */
-/*   Updated: 2025/02/02 22:03:06 by jiwnam           ###   ########.fr       */
+/*   Updated: 2025/02/03 18:08:33 by jiwnam           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,8 @@ int	main(int ac, char *av[])
 
 	if (ac == 1)
 		return (0);
-	while (idx < ac)
-		cnt += count_nums(av[idx++]);
+	while (idx < ac - 1)
+		cnt += count_nums(av[++idx]);
 	tmp_arr = make_arr(av + 1, cnt);
 	if (!tmp_arr)
 		print_error(NULL, NULL);
