@@ -6,7 +6,7 @@
 /*   By: jiwnam <jiwnam@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/25 17:54:05 by jiwnam            #+#    #+#             */
-/*   Updated: 2025/01/31 13:31:20 by jiwnam           ###   ########.fr       */
+/*   Updated: 2025/02/03 17:06:47 by jiwnam           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ void	ra(t_stack *a)
 	while (idx < a->top)
 		a->stack[idx] = a->stack[idx + 1];
 	a->stack[idx] = tmp;
+	write(1, "ra\n", 3);
 }
 
 void	rb(t_stack *b)
@@ -34,10 +35,12 @@ void	rb(t_stack *b)
 	while (idx < b->top)
 		b->stack[idx] = b->stack[idx + 1];
 	b->stack[idx] = tmp;
+	write(1, "rb\n", 3);
 }
 
 void	rr(t_stack *a, t_stack *b)
 {
 	ra(a);
 	rb(b);
+	write(1, "rr\n", 3);
 }

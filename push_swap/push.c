@@ -6,7 +6,7 @@
 /*   By: jiwnam <jiwnam@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/25 17:47:22 by jiwnam            #+#    #+#             */
-/*   Updated: 2025/01/31 15:05:33 by jiwnam           ###   ########.fr       */
+/*   Updated: 2025/02/03 16:59:59 by jiwnam           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ void	pa(t_stack *a, t_stack *b)
 		return ;
 	data = pop(b);
 	push(a, data);
+	write(1, "pa\n", 3);
 }
 
 void	pb(t_stack *a, t_stack *b)
@@ -30,4 +31,5 @@ void	pb(t_stack *a, t_stack *b)
 		return ;
 	data = pop(a);
 	push(b, data);
+	write(1, "pb\n", 3);
 }
