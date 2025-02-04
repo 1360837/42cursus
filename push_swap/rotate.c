@@ -6,7 +6,7 @@
 /*   By: jiwnam <jiwnam@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/25 17:54:05 by jiwnam            #+#    #+#             */
-/*   Updated: 2025/02/03 17:06:47 by jiwnam           ###   ########.fr       */
+/*   Updated: 2025/02/04 18:06:58 by jiwnam           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,15 @@ void	ra(t_stack *a)
 	int	tmp;
 	int	idx;
 
-	idx = 0;
-	tmp = a->stack[0];
-	while (idx < a->top)
-		a->stack[idx] = a->stack[idx + 1];
+	idx = a->top;
+	tmp = a->stack[a->top];
+	while (idx > 0)
+	{
+		a->stack[idx] = a->stack[idx - 1];
+		idx--;
+	}
 	a->stack[idx] = tmp;
-	write(1, "ra\n", 3);
+	write(1, "ra\n", 4);
 }
 
 void	rb(t_stack *b)
@@ -30,12 +33,15 @@ void	rb(t_stack *b)
 	int	tmp;
 	int	idx;
 
-	idx = 0;
-	tmp = b->stack[0];
-	while (idx < b->top)
-		b->stack[idx] = b->stack[idx + 1];
+	idx = b->top;
+	tmp = b->stack[b->top];
+	while (idx > 0)
+	{
+		b->stack[idx] = b->stack[idx - 1];
+		idx--;
+	}
 	b->stack[idx] = tmp;
-	write(1, "rb\n", 3);
+	write(1, "rb\n", 4);
 }
 
 void	rr(t_stack *a, t_stack *b)

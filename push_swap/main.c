@@ -6,7 +6,7 @@
 /*   By: jiwnam <jiwnam@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/02 21:33:13 by jiwnam            #+#    #+#             */
-/*   Updated: 2025/02/03 18:08:33 by jiwnam           ###   ########.fr       */
+/*   Updated: 2025/02/04 18:15:51 by jiwnam           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,4 +36,7 @@ int	main(int ac, char *av[])
 	if (!b)
 		print_error((void **)&a, NULL);
 	push_swap(a, b);
+	int i = a->top;
+	while (i >= 0)
+		printf("%d ", a->stack[i--] + 1);
 }
