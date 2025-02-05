@@ -6,7 +6,7 @@
 /*   By: jiwnam <jiwnam@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 21:40:45 by jiwnam            #+#    #+#             */
-/*   Updated: 2025/02/05 22:40:09 by jiwnam           ###   ########.fr       */
+/*   Updated: 2025/02/05 22:42:40 by jiwnam           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,8 @@ void	push_swap(t_stack *a, t_stack *b)
 		return ;
 	while (digit < max_digit)
 	{
-		radix_sort_a_to_b(a, b, digit++);
-		radix_sort_b_to_a(b, a, digit++);
+		radix_sort_a_to_b_4(a, b, digit++);
+		radix_sort_b_to_a_4(b, a, digit++);
 	}
 	// max_digit인 경우 코딩
 	return ;

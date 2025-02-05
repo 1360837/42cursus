@@ -6,7 +6,7 @@
 /*   By: jiwnam <jiwnam@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/31 15:38:35 by jiwnam            #+#    #+#             */
-/*   Updated: 2025/02/05 22:40:08 by jiwnam           ###   ########.fr       */
+/*   Updated: 2025/02/05 22:46:25 by jiwnam           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,8 @@ int	is_num(char *str)
 	if (ft_strncmp(str, "-2147483648", 11) == 0)
 		return (1);
 	if (*str == '+' || *str == '-')
+		str++;
+	while (*str == '0')
 		str++;
 	str_len = ft_strlen(str);
 	if (str_len > 10)
