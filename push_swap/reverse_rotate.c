@@ -6,7 +6,7 @@
 /*   By: jiwnam <jiwnam@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/25 17:56:08 by jiwnam            #+#    #+#             */
-/*   Updated: 2025/02/04 18:06:50 by jiwnam           ###   ########.fr       */
+/*   Updated: 2025/02/05 15:17:33 by jiwnam           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	rra(t_stack *a)
 		idx++;
 	}
 	a->stack[idx] = tmp;
-	write(1, "rra\n", 3);
+	write(1, "rra\n", 4);
 }
 
 void	rrb(t_stack *b)
@@ -41,7 +41,7 @@ void	rrb(t_stack *b)
 		idx++;
 	}
 	b->stack[idx] = tmp;
-	write(1, "rrb\n", 3);
+	write(1, "rrb\n", 4);
 }
 
 void	rrr(t_stack *a, t_stack *b)
