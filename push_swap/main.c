@@ -6,7 +6,7 @@
 /*   By: jiwnam <jiwnam@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/02 21:33:13 by jiwnam            #+#    #+#             */
-/*   Updated: 2025/02/05 18:15:11 by jiwnam           ###   ########.fr       */
+/*   Updated: 2025/02/05 22:40:09 by jiwnam           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,4 +38,5 @@ int	main(int ac, char *av[])
 	if (is_sorted(a))
 		return (0);
 	push_swap(a, b);
+	free_stack(&a, &b);
 }

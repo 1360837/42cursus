@@ -6,7 +6,7 @@
 /*   By: jiwnam <jiwnam@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 21:26:17 by jiwnam            #+#    #+#             */
-/*   Updated: 2025/02/05 18:16:09 by jiwnam           ###   ########.fr       */
+/*   Updated: 2025/02/05 20:59:43 by jiwnam           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ void			stack_value(unsigned int *arr, t_stack *st, int size);
 int				is_num(char *str);
 void			tmp_free(char **arr);
 int				count_nums(char *str);
+void			free_stack(t_stack **st1, t_stack **st2);
 
 //swap.c
 void			sa(t_stack *a);

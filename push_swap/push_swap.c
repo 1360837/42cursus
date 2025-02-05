@@ -6,7 +6,7 @@
 /*   By: jiwnam <jiwnam@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 21:40:45 by jiwnam            #+#    #+#             */
-/*   Updated: 2025/02/05 18:15:06 by jiwnam           ###   ########.fr       */
+/*   Updated: 2025/02/05 22:40:09 by jiwnam           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,93 +21,15 @@ void	push_swap(t_stack *a, t_stack *b)
 	max_digit = find_digit(a->top, 4);
 	if (is_sorted(a))
 		return ;
-	while (digit <= max_digit)
+	while (digit < max_digit)
 	{
 		radix_sort_a_to_b(a, b, digit++);
 		radix_sort_b_to_a(b, a, digit++);
 	}
+	// max_digit인 경우 코딩
 	return ;
 }
 
-void	radix_sort_a_to_b(t_stack *a, t_stack *b, int digit)
-{
-	int	size;
-	int	idx;
-	int	digit_idx;
-	int	data;
-
-	size = a->top;
-	idx = 0;
-	while (idx <= size)
-	{
-		data = a->stack[a->top];
-		digit_idx = 1;
-		while (digit_idx++ < digit)
-			data /= 4;
-		data %= 4;
-		if (data == 0 || data == 1)
-			pb(a, b);
-		else
-			ra(a);
-		if (data == 1)
-			rb(b);
-		idx++;
-	}
-	size = a->top;
-	idx = 0;
-	while (idx <= size)
-	{
-		data = a->stack[a->top];
-		digit_idx = 1;
-		while (digit_idx++ < digit)
-			data /= 4;
-		data %= 4;
-		pb(a, b);
-		if (data == 3)
-			rb(b);
-		idx++;
-	}
-}
-
-void	radix_sort_b_to_a(t_stack *b, t_stack *a, int digit)
-{
-	int	size;
-	int	idx;
-	int	digit_idx;
-	int	data;
-
-	size = b->top;
-	idx = 0;
-	while (idx <= size)
-	{
-		data = b->stack[b->top];
-		digit_idx = 1;
-		while (digit_idx++ < digit)
-			data /= 4;
-		data %= 4;
-		if (data == 0 || data == 1)
-			pa(a, b);
-		else
-			rb(b);
-		if (data == 1)
-			ra(a);
-		idx++;
-	}
-	size = b->top;
-	idx = 0;
-	while (idx <= size)
-	{
-		data = b->stack[b->top];
-		digit_idx = 1;
-		while (digit_idx++ < digit)
-			data /= 4;
-		data %= 4;
-		pa(a, b);
-		if (data == 3)
-			ra(a);
-		idx++;
-	}
-}
 
 int	find_digit(int size, int radix)
 {

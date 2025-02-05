@@ -6,7 +6,7 @@
 /*   By: jiwnam <jiwnam@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/31 15:38:35 by jiwnam            #+#    #+#             */
-/*   Updated: 2025/02/05 18:28:31 by jiwnam           ###   ########.fr       */
+/*   Updated: 2025/02/05 22:40:08 by jiwnam           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,4 +114,15 @@ int	count_nums(char *str)
 		str++;
 	}
 	return (cnt);
+}
+
+void	free_stack(t_stack **st1, t_stack **st2)
+{
+	if ((*st1)->stack)
+		free((*st1)->stack);
+	free(*st1);
+	*st1 = NULL;
+	if ((*st2)->stack)
+		free((*st2)->stack);
+	free(*st2);
 }
