@@ -6,7 +6,7 @@
 /*   By: jiwnam <jiwnam@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/25 18:03:03 by jiwnam            #+#    #+#             */
-/*   Updated: 2025/02/04 16:55:30 by jiwnam           ###   ########.fr       */
+/*   Updated: 2025/02/05 15:10:38 by jiwnam           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ int	is_sorted(t_stack *a)
 	idx = 0;
 	while (idx < a->top)
 	{
-		if (a->stack[idx] > a->stack[idx + 1])
+		if (a->stack[idx] < a->stack[idx + 1])
 			return (0);
 		idx++;
 	}

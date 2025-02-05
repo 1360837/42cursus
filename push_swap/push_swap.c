@@ -6,7 +6,7 @@
 /*   By: jiwnam <jiwnam@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 21:40:45 by jiwnam            #+#    #+#             */
-/*   Updated: 2025/02/04 18:07:31 by jiwnam           ###   ########.fr       */
+/*   Updated: 2025/02/05 18:15:06 by jiwnam           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	push_swap(t_stack *a, t_stack *b)
 	max_digit = find_digit(a->top, 4);
 	if (is_sorted(a))
 		return ;
-	while (digit <= max_digit) // 조건문 수정필요 (최적화)
+	while (digit <= max_digit)
 	{
 		radix_sort_a_to_b(a, b, digit++);
 		radix_sort_b_to_a(b, a, digit++);
@@ -42,7 +42,7 @@ void	radix_sort_a_to_b(t_stack *a, t_stack *b, int digit)
 	{
 		data = a->stack[a->top];
 		digit_idx = 1;
-		while (digit_idx < digit)
+		while (digit_idx++ < digit)
 			data /= 4;
 		data %= 4;
 		if (data == 0 || data == 1)
@@ -59,7 +59,7 @@ void	radix_sort_a_to_b(t_stack *a, t_stack *b, int digit)
 	{
 		data = a->stack[a->top];
 		digit_idx = 1;
-		while (digit_idx < digit)
+		while (digit_idx++ < digit)
 			data /= 4;
 		data %= 4;
 		pb(a, b);
@@ -88,9 +88,9 @@ void	radix_sort_b_to_a(t_stack *b, t_stack *a, int digit)
 		if (data == 0 || data == 1)
 			pa(a, b);
 		else
-			rb(a);
+			rb(b);
 		if (data == 1)
-			ra(b);
+			ra(a);
 		idx++;
 	}
 	size = b->top;
@@ -99,19 +99,19 @@ void	radix_sort_b_to_a(t_stack *b, t_stack *a, int digit)
 	{
 		data = b->stack[b->top];
 		digit_idx = 1;
-		while (digit_idx < digit)
+		while (digit_idx++ < digit)
 			data /= 4;
 		data %= 4;
 		pa(a, b);
 		if (data == 3)
-			ra(b);
+			ra(a);
 		idx++;
 	}
 }
 
 int	find_digit(int size, int radix)
 {
-	int return_value;
+	int	return_value;
 
 	return_value = 0;
 	while (size > 0)
