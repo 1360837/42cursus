@@ -6,17 +6,17 @@
 /*   By: jiwnam <jiwnam@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/31 15:38:35 by jiwnam            #+#    #+#             */
-/*   Updated: 2025/02/04 18:38:43 by jiwnam           ###   ########.fr       */
+/*   Updated: 2025/02/05 18:28:31 by jiwnam           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	*make_arr(char *av[], int size)
+unsigned int	*make_arr(char *av[], int size)
 {
-	int			str_idx;
-	int			*arr;
-	char		**str_tmp;
+	int				str_idx;
+	unsigned int	*arr;
+	char			**str_tmp;
 
 	arr = malloc(sizeof(int) * size);
 	if (!arr)
@@ -26,12 +26,12 @@ int	*make_arr(char *av[], int size)
 		str_tmp = ft_split(*av, ' ');
 		if (!str_tmp)
 			print_error((void **)&arr, NULL);
-		str_idx = count_nums(*av);
-		while (str_idx-- > 0)
+		str_idx = 0;
+		while (str_idx < count_nums(*av))
 		{
 			if (!is_num(str_tmp[str_idx]))
 				print_error((void **)&arr, (void **)str_tmp);
-			arr[--size] = ft_atoi(str_tmp[str_idx]);
+			arr[--size] = ft_atoi(str_tmp[str_idx++]);
 		}
 		tmp_free(str_tmp);
 		av++;
@@ -39,7 +39,7 @@ int	*make_arr(char *av[], int size)
 	return (arr);
 }
 
-void	stack_value(int *arr, t_stack *st, int size)
+void	stack_value(unsigned int *arr, t_stack *st, int size)
 {
 	int	i;
 	int	j;
@@ -65,8 +65,17 @@ void	stack_value(int *arr, t_stack *st, int size)
 
 int	is_num(char *str)
 {
+	int	str_len;
+
+	if (ft_strncmp(str, "-2147483648", 11) == 0)
+		return (1);
 	if (*str == '+' || *str == '-')
 		str++;
+	str_len = ft_strlen(str);
+	if (str_len > 10)
+		return (0);
+	if (str_len == 10 && ft_strncmp(str, "2147483647", str_len) > 0)
+		return (0);
 	while (*str)
 	{
 		if (*str < '0' || *str > '9')
