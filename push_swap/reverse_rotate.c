@@ -6,13 +6,13 @@
 /*   By: jiwnam <jiwnam@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/25 17:56:08 by jiwnam            #+#    #+#             */
-/*   Updated: 2025/02/05 15:17:33 by jiwnam           ###   ########.fr       */
+/*   Updated: 2025/02/06 18:30:10 by jiwnam           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	rra(t_stack *a)
+void	rra(t_stack *a, int print_flag)
 {
 	int	tmp;
 	int	idx;
@@ -25,10 +25,11 @@ void	rra(t_stack *a)
 		idx++;
 	}
 	a->stack[idx] = tmp;
-	write(1, "rra\n", 4);
+	if (print_flag)
+		write(1, "rra\n", 4);
 }
 
-void	rrb(t_stack *b)
+void	rrb(t_stack *b, int print_flag)
 {
 	int	tmp;
 	int	idx;
@@ -41,12 +42,14 @@ void	rrb(t_stack *b)
 		idx++;
 	}
 	b->stack[idx] = tmp;
-	write(1, "rrb\n", 4);
+	if (print_flag)
+		write(1, "rrb\n", 4);
 }
 
-void	rrr(t_stack *a, t_stack *b)
+void	rrr(t_stack *a, t_stack *b, int print_flag)
 {
-	rra(a);
-	rrb(b);
-	write(1, "rrr\n", 4);
+	rra(a, print_flag);
+	rrb(b, print_flag);
+	if (print_flag)
+		write(1, "rrr\n", 4);
 }

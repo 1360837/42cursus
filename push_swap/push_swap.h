@@ -6,7 +6,7 @@
 /*   By: jiwnam <jiwnam@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 21:26:17 by jiwnam            #+#    #+#             */
-/*   Updated: 2025/02/06 18:13:28 by jiwnam           ###   ########.fr       */
+/*   Updated: 2025/02/06 18:27:19 by jiwnam           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,23 +45,23 @@ int				count_nums(char *str);
 void			free_stack(t_stack **st1, t_stack **st2);
 
 //swap.c
-void			sa(t_stack *a);
-void			sb(t_stack *b);
-void			ss(t_stack *a, t_stack *b);
+void			sa(t_stack *a, int print_flag);
+void			sb(t_stack *b, int print_flag);
+void			ss(t_stack *a, t_stack *b, int print_flag);
 
 //push.c
-void			pa(t_stack *a, t_stack *b);
-void			pb(t_stack *a, t_stack *b);
+void			pa(t_stack *a, t_stack *b, int print_flag);
+void			pb(t_stack *a, t_stack *b, int print_flag);
 
 //rotate.c
-void			ra(t_stack *a);
-void			rb(t_stack *b);
-void			rr(t_stack *a, t_stack *b);
+void			ra(t_stack *a, int print_flag);
+void			rb(t_stack *b, int print_flag);
+void			rr(t_stack *a, t_stack *b, int print_flag);
 
 //reverse_rotate.c
-void			rra(t_stack *a);
-void			rrb(t_stack *b);
-void			rrr(t_stack *a, t_stack *b);
+void			rra(t_stack *a, int print_flag);
+void			rrb(t_stack *b, int print_flag);
+void			rrr(t_stack *a, t_stack *b, int print_flag);
 
 //stack.c
 t_stack			*init_stack(int size);
