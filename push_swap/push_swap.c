@@ -6,7 +6,7 @@
 /*   By: jiwnam <jiwnam@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 21:40:45 by jiwnam            #+#    #+#             */
-/*   Updated: 2025/02/06 18:13:48 by jiwnam           ###   ########.fr       */
+/*   Updated: 2025/02/06 19:08:09 by jiwnam           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,12 +45,12 @@
 // 	return ;
 // }
 
-void	push_swap(t_stack *a, t_stack *b)
+void	push_swap(t_stack *a, t_stack *b, int print_flag)
 {
-	radix_sort_a_to_b_3(a, b, 1);
-	radix_sort_b_to_a_3(b, a, 2);
-	radix_sort_a_to_b_3(a, b, 3);
-	radix_sort_b_to_a_4(b, a, 4);
+	radix_sort_a_to_b_3(a, b, 1, print_flag);
+	radix_sort_b_to_a_3(b, a, 2, print_flag);
+	radix_sort_a_to_b_3(a, b, 3, print_flag);
+	radix_sort_b_to_a_4(b, a, 4, print_flag);
 }
 
 unsigned int	*make_arr(char *av[], int size)
