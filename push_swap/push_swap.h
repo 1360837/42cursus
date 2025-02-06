@@ -6,7 +6,7 @@
 /*   By: jiwnam <jiwnam@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 21:26:17 by jiwnam            #+#    #+#             */
-/*   Updated: 2025/02/05 22:42:39 by jiwnam           ###   ########.fr       */
+/*   Updated: 2025/02/06 18:13:28 by jiwnam           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,15 +28,17 @@ typedef struct s_stack
 //push_swap.c
 void			push_swap(t_stack *a, t_stack *b);
 int				find_digit(int size, int radix);
-void			print_error(void **a1, void **a2);
+unsigned int	*make_arr(char *av[], int size);
+void			stack_value(unsigned int *arr, t_stack *st, int size);
 
 //radix_sort.c
+void			radix_sort_a_to_b_3(t_stack *a, t_stack *b, int digit);
+void			radix_sort_b_to_a_3(t_stack *b, t_stack *a, int digit);
 void			radix_sort_a_to_b_4(t_stack *a, t_stack *b, int digit);
 void			radix_sort_b_to_a_4(t_stack *b, t_stack *a, int digit);
 
 //push_swap_utils.c
-unsigned int	*make_arr(char *av[], int size);
-void			stack_value(unsigned int *arr, t_stack *st, int size);
+void			print_error(void **a1, void **a2);
 int				is_num(char *str);
 void			tmp_free(char **arr);
 int				count_nums(char *str);

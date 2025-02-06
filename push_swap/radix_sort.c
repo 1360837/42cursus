@@ -6,88 +6,111 @@
 /*   By: jiwnam <jiwnam@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/05 22:20:38 by jiwnam            #+#    #+#             */
-/*   Updated: 2025/02/05 22:42:41 by jiwnam           ###   ########.fr       */
+/*   Updated: 2025/02/06 18:13:11 by jiwnam           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	radix_sort_a_to_b_4(t_stack *a, t_stack *b, int digit)
+unsigned int	calculate_data(t_stack *st, int digit, int radix)
 {
-	int	size;
-	int	idx;
-	int	digit_idx;
-	int	data;
+	unsigned int	data;
+	int				digit_idx;
+
+	data = st->stack[st->top];
+	digit_idx = 1;
+	while (digit_idx++ < digit)
+		data /= 3;
+	data %= radix;
+	return (data);
+}
+
+void	radix_sort_a_to_b_3(t_stack *a, t_stack *b, int digit)
+{
+	int				size;
+	unsigned int	data;
 
 	size = a->top;
-	idx = 0;
-	while (idx <= size)
+	while (size-- >= 0)
 	{
-		data = a->stack[a->top];
-		digit_idx = 1;
-		while (digit_idx++ < digit)
-			data /= 4;
-		data %= 4;
+		data = calculate_data(a, digit, 3);
 		if (data == 0 || data == 1)
 			pb(a, b);
 		else
 			ra(a);
 		if (data == 1)
 			rb(b);
-		idx++;
 	}
-	size = a->top;
-	idx = 0;
-	while (idx <= size)
-	{
-		data = a->stack[a->top];
-		digit_idx = 1;
-		while (digit_idx++ < digit)
-			data /= 4;
-		data %= 4;
+	while (!is_empty(a))
 		pb(a, b);
-		if (data == 3)
-			rb(b);
-		idx++;
-	}
 }
 
-void	radix_sort_b_to_a_4(t_stack *b, t_stack *a, int digit)
+void	radix_sort_b_to_a_3(t_stack *b, t_stack *a, int digit)
 {
-	int	size;
-	int	idx;
-	int	digit_idx;
-	int	data;
+	int				size;
+	unsigned int	data;
 
 	size = b->top;
-	idx = 0;
-	while (idx <= size)
+	while (size-- >= 0)
 	{
-		data = b->stack[b->top];
-		digit_idx = 1;
-		while (digit_idx++ < digit)
-			data /= 4;
-		data %= 4;
+		data = calculate_data(b, digit, 3);
 		if (data == 0 || data == 1)
 			pa(a, b);
 		else
 			rb(b);
 		if (data == 1)
 			ra(a);
-		idx++;
 	}
-	size = b->top;
-	idx = 0;
-	while (idx <= size)
+	while (!is_empty(b))
+		pa(a, b);
+}
+
+void	radix_sort_a_to_b_4(t_stack *a, t_stack *b, int digit)
+{
+	int				size;
+	unsigned int	data;
+
+	size = a->top;
+	while (size-- >= 0)
 	{
-		data = b->stack[b->top];
-		digit_idx = 1;
-		while (digit_idx++ < digit)
-			data /= 4;
-		data %= 4;
+		data = calculate_data(a, digit, 4);
+		if (data == 0 || data == 1)
+			pb(a, b);
+		else
+			ra(a);
+		if (data == 1)
+			rb(b);
+	}
+	while (!is_empty(a))
+	{
+		data = calculate_data(a, digit, 4);
+		pb(a, b);
+		if (data == 3)
+			rb(b);
+	}
+}
+
+void	radix_sort_b_to_a_4(t_stack *b, t_stack *a, int digit)
+{
+	int				size;
+	unsigned int	data;
+
+	size = b->top;
+	while (size-- >= 0)
+	{
+		data = calculate_data(b, digit, 4);
+		if (data == 0 || data == 1)
+			pa(a, b);
+		else
+			rb(b);
+		if (data == 1)
+			ra(a);
+	}
+	while (!is_empty(b))
+	{
+		data = calculate_data(b, digit, 4);
 		pa(a, b);
 		if (data == 3)
 			ra(a);
-		idx++;
 	}
 }
