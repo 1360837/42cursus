@@ -6,7 +6,7 @@
 /*   By: jiwnam <jiwnam@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 21:26:17 by jiwnam            #+#    #+#             */
-/*   Updated: 2025/02/06 19:02:01 by jiwnam           ###   ########.fr       */
+/*   Updated: 2025/02/06 21:46:21 by jiwnam           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,19 +26,19 @@ typedef struct s_stack
 }	t_stack;
 
 //push_swap.c
-void			push_swap(t_stack *a, t_stack *b, int print_flag);
+void			push_swap(t_stack *a, t_stack *b, int flag);
 int				find_digit(int size, int radix);
 unsigned int	*make_arr(char *av[], int size);
 void			stack_value(unsigned int *arr, t_stack *st, int size);
 
 //radix_sort.c
-void			radix_sort_a_to_b_3(t_stack *a, t_stack *b, int digit, int print_flag);
-void			radix_sort_b_to_a_3(t_stack *b, t_stack *a, int digit, int print_flag);
-void			radix_sort_a_to_b_4(t_stack *a, t_stack *b, int digit, int print_flag);
-void			radix_sort_b_to_a_4(t_stack *b, t_stack *a, int digit, int print_flag);
+void			radix_sort_atob_3(t_stack *a, t_stack *b, int digit, int flag);
+void			radix_sort_btoa_3(t_stack *b, t_stack *a, int digit, int flag);
+void			radix_sort_atob_4(t_stack *a, t_stack *b, int digit, int flag);
+void			radix_sort_btoa_4(t_stack *b, t_stack *a, int digit, int flag);
 
 //push_swap_utils.c
-void			print_error(void **a1, void **a2);
+void			print_error(void **a);
 int				is_num(char *str);
 void			tmp_free(char **arr);
 int				count_nums(char *str);

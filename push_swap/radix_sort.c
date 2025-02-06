@@ -6,7 +6,7 @@
 /*   By: jiwnam <jiwnam@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/05 22:20:38 by jiwnam            #+#    #+#             */
-/*   Updated: 2025/02/06 19:08:07 by jiwnam           ###   ########.fr       */
+/*   Updated: 2025/02/06 21:44:51 by jiwnam           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ unsigned int	calculate_data(t_stack *st, int digit, int radix)
 	return (data);
 }
 
-void	radix_sort_a_to_b_3(t_stack *a, t_stack *b, int digit, int print_flag)
+void	radix_sort_atob_3(t_stack *a, t_stack *b, int digit, int flag)
 {
 	int				size;
 	unsigned int	data;
@@ -35,17 +35,17 @@ void	radix_sort_a_to_b_3(t_stack *a, t_stack *b, int digit, int print_flag)
 	{
 		data = calculate_data(a, digit, 3);
 		if (data == 0 || data == 1)
-			pb(a, b, print_flag);
+			pb(a, b, flag);
 		else
-			ra(a, print_flag);
+			ra(a, flag);
 		if (data == 1)
-			rb(b, print_flag);
+			rb(b, flag);
 	}
 	while (!is_empty(a))
-		pb(a, b, print_flag);
+		pb(a, b, flag);
 }
 
-void	radix_sort_b_to_a_3(t_stack *b, t_stack *a, int digit, int print_flag)
+void	radix_sort_btoa_3(t_stack *b, t_stack *a, int digit, int flag)
 {
 	int				size;
 	unsigned int	data;
@@ -55,17 +55,17 @@ void	radix_sort_b_to_a_3(t_stack *b, t_stack *a, int digit, int print_flag)
 	{
 		data = calculate_data(b, digit, 3);
 		if (data == 0 || data == 1)
-			pa(a, b, print_flag);
+			pa(a, b, flag);
 		else
-			rb(b, print_flag);
+			rb(b, flag);
 		if (data == 1)
-			ra(a, print_flag);
+			ra(a, flag);
 	}
 	while (!is_empty(b))
-		pa(a, b, print_flag);
+		pa(a, b, flag);
 }
 
-void	radix_sort_a_to_b_4(t_stack *a, t_stack *b, int digit, int print_flag)
+void	radix_sort_atob_4(t_stack *a, t_stack *b, int digit, int flag)
 {
 	int				size;
 	unsigned int	data;
@@ -75,22 +75,22 @@ void	radix_sort_a_to_b_4(t_stack *a, t_stack *b, int digit, int print_flag)
 	{
 		data = calculate_data(a, digit, 4);
 		if (data == 0 || data == 1)
-			pb(a, b, print_flag);
+			pb(a, b, flag);
 		else
-			ra(a, print_flag);
+			ra(a, flag);
 		if (data == 1)
-			rb(b, print_flag);
+			rb(b, flag);
 	}
 	while (!is_empty(a))
 	{
 		data = calculate_data(a, digit, 4);
-		pb(a, b, print_flag);
+		pb(a, b, flag);
 		if (data == 3)
-			rb(b, print_flag);
+			rb(b, flag);
 	}
 }
 
-void	radix_sort_b_to_a_4(t_stack *b, t_stack *a, int digit, int print_flag)
+void	radix_sort_btoa_4(t_stack *b, t_stack *a, int digit, int flag)
 {
 	int				size;
 	unsigned int	data;
@@ -100,17 +100,17 @@ void	radix_sort_b_to_a_4(t_stack *b, t_stack *a, int digit, int print_flag)
 	{
 		data = calculate_data(b, digit, 4);
 		if (data == 0 || data == 1)
-			pa(a, b, print_flag);
+			pa(a, b, flag);
 		else
-			rb(b, print_flag);
+			rb(b, flag);
 		if (data == 1)
-			ra(a, print_flag);
+			ra(a, flag);
 	}
 	while (!is_empty(b))
 	{
 		data = calculate_data(b, digit, 4);
-		pa(a, b, print_flag);
+		pa(a, b, flag);
 		if (data == 3)
-			ra(a, print_flag);
+			ra(a, flag);
 	}
 }

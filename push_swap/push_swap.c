@@ -6,7 +6,7 @@
 /*   By: jiwnam <jiwnam@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 21:40:45 by jiwnam            #+#    #+#             */
-/*   Updated: 2025/02/06 19:08:09 by jiwnam           ###   ########.fr       */
+/*   Updated: 2025/02/06 21:46:24 by jiwnam           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,17 +45,17 @@
 // 	return ;
 // }
 
-void	push_swap(t_stack *a, t_stack *b, int print_flag)
+void	push_swap(t_stack *a, t_stack *b, int flag)
 {
-	radix_sort_a_to_b_3(a, b, 1, print_flag);
-	radix_sort_b_to_a_3(b, a, 2, print_flag);
-	radix_sort_a_to_b_3(a, b, 3, print_flag);
-	radix_sort_b_to_a_4(b, a, 4, print_flag);
+	radix_sort_a_to_b_3(a, b, 1, flag);
+	radix_sort_b_to_a_3(b, a, 2, flag);
+	radix_sort_a_to_b_3(a, b, 3, flag);
+	radix_sort_b_to_a_4(b, a, 4, flag);
 }
 
 unsigned int	*make_arr(char *av[], int size)
 {
-	int				str_idx;
+	static int		str_idx;
 	unsigned int	*arr;
 	char			**str_tmp;
 
@@ -66,12 +66,14 @@ unsigned int	*make_arr(char *av[], int size)
 	{
 		str_tmp = ft_split(*av, ' ');
 		if (!str_tmp)
-			print_error((void **)&arr, NULL);
-		str_idx = 0;
+			print_error((void **)&arr);
 		while (str_idx < count_nums(*av))
 		{
 			if (!is_num(str_tmp[str_idx]))
-				print_error((void **)&arr, (void **)str_tmp);
+			{
+				tmp_free(str_tmp);
+				print_error((void **)&arr);
+			}
 			arr[--size] = ft_atoi(str_tmp[str_idx++]);
 		}
 		tmp_free(str_tmp);
@@ -96,7 +98,10 @@ void	stack_value(unsigned int *arr, t_stack *st, int size)
 			if (arr[j] < arr[i])
 				num++;
 			else if (j != i && arr[j] == arr[i])
-				print_error((void **)&arr, (void **)&st);
+			{
+				free_stack(&st, NULL);
+				print_error((void **)&arr);
+			}
 			j++;
 		}
 		push(st, num);

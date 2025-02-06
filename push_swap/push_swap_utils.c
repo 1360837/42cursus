@@ -6,23 +6,18 @@
 /*   By: jiwnam <jiwnam@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/31 15:38:35 by jiwnam            #+#    #+#             */
-/*   Updated: 2025/02/06 19:08:08 by jiwnam           ###   ########.fr       */
+/*   Updated: 2025/02/06 19:24:09 by jiwnam           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	print_error(void **a1, void **a2)
+void	print_error(void **a)
 {
-	if (a1 && *a1)
+	if (a && *a)
 	{
-		free(*a1);
-		*a1 = NULL;
-	}
-	if (a1 && *a1)
-	{
-		free(*a2);
-		*a2 = NULL;
+		free(*a);
+		*a = NULL;
 	}
 	write(2, "Error\n", 6);
 	exit(0);
@@ -85,11 +80,18 @@ int	count_nums(char *str)
 
 void	free_stack(t_stack **st1, t_stack **st2)
 {
-	if ((*st1)->stack)
-		free((*st1)->stack);
-	free(*st1);
-	*st1 = NULL;
-	if ((*st2)->stack)
-		free((*st2)->stack);
-	free(*st2);
+	if (st1)
+	{
+		if ((*st1)->stack)
+			free((*st1)->stack);
+		free(*st1);
+		*st1 = NULL;
+	}
+	if (st2)
+	{
+		if ((*st2)->stack)
+			free((*st2)->stack);
+		free(*st2);
+		*st2 = NULL;
+	}
 }
