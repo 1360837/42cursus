@@ -6,7 +6,7 @@
 /*   By: jiwnam <jiwnam@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/07 22:08:22 by jiwnam            #+#    #+#             */
-/*   Updated: 2025/02/07 23:44:05 by jiwnam           ###   ########.fr       */
+/*   Updated: 2025/02/08 02:07:29 by jiwnam           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,4 +53,3 @@ int	find_digit(int size, int radix)
 	}
 	return (return_value);
 }
-

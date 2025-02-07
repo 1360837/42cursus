@@ -6,7 +6,7 @@
 /*   By: jiwnam <jiwnam@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 21:40:45 by jiwnam            #+#    #+#             */
-/*   Updated: 2025/02/07 23:46:47 by jiwnam           ###   ########.fr       */
+/*   Updated: 2025/02/08 02:07:42 by jiwnam           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,6 @@ void	push_swap(t_stack *a, t_stack *b, int flag)
 		radix_sort_btoa_3(b, a, digit++, flag);
 }
 
-
 t_stack	*make_stack(char *av[], int size)
 {
 	unsigned int	*tmp_arr;
@@ -52,13 +51,14 @@ t_stack	*make_stack(char *av[], int size)
 	a_tmp = init_stack(size);
 	if (!a || !a_tmp)
 	{
-		free_stack(&a, &a_tmp);
+		free_stack(a, a_tmp);
 		print_error((void **)&tmp_arr);
 	}
 	stack_value(tmp_arr, a_tmp, size);
 	push_swap(a_tmp, a, 0);
-	stack_idx_value(a, a_tmp, tmp_arr);
-	free_stack(&a_tmp, NULL);
+	stack_value(tmp_arr, a, size);
+	stack_idx_value(a, a_tmp);
+	free_stack(a_tmp, NULL);
 	free(tmp_arr);
 	return (a);
 }
@@ -107,7 +107,7 @@ void	stack_value(unsigned int *arr, t_stack *st, int size)
 				num++;
 			else if (j != i && arr[j] == arr[i])
 			{
-				free_stack(&st, NULL);
+				free_stack(st, NULL);
 				print_error((void **)&arr);
 			}
 			j++;
@@ -117,22 +117,16 @@ void	stack_value(unsigned int *arr, t_stack *st, int size)
 	}
 }
 
-void	stack_idx_value(t_stack *a, t_stack *a_tmp, unsigned int *arr)
+void	stack_idx_value(t_stack *a, t_stack *a_tmp)
 {
-	int	cnt;
-	int	idx;
+	int				cnt;
+	unsigned int	data;
 
-	cnt = 0;
-	while (cnt <= a_tmp->top)
+	cnt = a_tmp->top;
+	while (cnt >= 0)
 	{
-		idx = 0;
-		while (idx <= a_tmp->top)
-		{
-			if (a_tmp->stack[cnt] == arr[idx])
-				break ;
-			idx++;
-		}
-		a->stack[idx] = cnt++;
+		data = a->stack[cnt];
+		a->stack[cnt--] = a_tmp->stack[a_tmp->top - data];
 	}
 	a->top = a_tmp->top;
 }

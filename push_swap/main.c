@@ -6,7 +6,7 @@
 /*   By: jiwnam <jiwnam@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/02 21:33:13 by jiwnam            #+#    #+#             */
-/*   Updated: 2025/02/07 23:34:08 by jiwnam           ###   ########.fr       */
+/*   Updated: 2025/02/08 02:05:54 by jiwnam           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,9 +27,9 @@ int	main(int ac, char *av[])
 	b = init_stack(cnt);
 	if (!a || !b)
 	{
-		free_stack(&a, &b);
+		free_stack(a, b);
 		print_error(NULL);
 	}
 	push_swap(a, b, 1);
-	free_stack(&a, &b);
+	free_stack(a, b);
 }

@@ -6,7 +6,7 @@
 /*   By: jiwnam <jiwnam@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 21:26:17 by jiwnam            #+#    #+#             */
-/*   Updated: 2025/02/07 23:42:52 by jiwnam           ###   ########.fr       */
+/*   Updated: 2025/02/08 00:59:56 by jiwnam           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,14 +30,14 @@ void			push_swap(t_stack *a, t_stack *b, int flag);
 t_stack			*make_stack(char *av[], int size);
 unsigned int	*make_arr(char *av[], int size);
 void			stack_value(unsigned int *arr, t_stack *st, int size);
-void			stack_idx_value(t_stack *a, t_stack *a_tmp, unsigned int *arr);
+void			stack_idx_value(t_stack *a, t_stack *a_tmp);
 
 //push_swap_utils.c
 void			print_error(void **a);
 int				is_num(char *str);
 void			tmp_free(char **arr);
 int				count_nums(char *str);
-void			free_stack(t_stack **st1, t_stack **st2);
+void			free_stack(t_stack *st1, t_stack *st2);
 
 //radix_sort.c
 void			radix_sort_atob_3(t_stack *a, t_stack *b, int digit, int flag);
