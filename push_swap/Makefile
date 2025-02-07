@@ -6,7 +6,7 @@
 #    By: jiwnam <jiwnam@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/19 20:07:57 by jiwnam            #+#    #+#              #
-#    Updated: 2025/02/05 22:43:02 by jiwnam           ###   ########.fr        #
+#    Updated: 2025/02/07 23:44:01 by jiwnam           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,14 +27,15 @@ CCFLAG			= -Wall -Wextra -Werror -g
 RM				= rm
 RMFLAG			= -rf
 
-MAN_SRC			= main.c			\
-				  push_swap.c		\
-				  push_swap_utils.c	\
-				  radix_sort.c		\
-				  swap.c			\
-				  push.c			\
-				  rotate.c			\
-				  reverse_rotate.c	\
+MAN_SRC			= main.c				\
+				  push_swap.c			\
+				  push_swap_utils.c		\
+				  radix_sort.c			\
+				  radix_sort_utils.c	\
+				  swap.c				\
+				  push.c				\
+				  rotate.c				\
+				  reverse_rotate.c		\
 				  stack.c
 
 BONUS_SRC		=

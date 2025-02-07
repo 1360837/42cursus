@@ -6,7 +6,7 @@
 /*   By: jiwnam <jiwnam@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/31 15:38:35 by jiwnam            #+#    #+#             */
-/*   Updated: 2025/02/06 19:24:09 by jiwnam           ###   ########.fr       */
+/*   Updated: 2025/02/07 23:29:23 by jiwnam           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,14 +80,14 @@ int	count_nums(char *str)
 
 void	free_stack(t_stack **st1, t_stack **st2)
 {
-	if (st1)
+	if (st1 && *st1)
 	{
 		if ((*st1)->stack)
 			free((*st1)->stack);
 		free(*st1);
 		*st1 = NULL;
 	}
-	if (st2)
+	if (st2 && *st2)
 	{
 		if ((*st2)->stack)
 			free((*st2)->stack);

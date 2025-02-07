@@ -6,24 +6,11 @@
 /*   By: jiwnam <jiwnam@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/05 22:20:38 by jiwnam            #+#    #+#             */
-/*   Updated: 2025/02/06 21:44:51 by jiwnam           ###   ########.fr       */
+/*   Updated: 2025/02/07 22:19:53 by jiwnam           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-unsigned int	calculate_data(t_stack *st, int digit, int radix)
-{
-	unsigned int	data;
-	int				digit_idx;
-
-	data = st->stack[st->top];
-	digit_idx = 1;
-	while (digit_idx++ < digit)
-		data /= 3;
-	data %= radix;
-	return (data);
-}
 
 void	radix_sort_atob_3(t_stack *a, t_stack *b, int digit, int flag)
 {
