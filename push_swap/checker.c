@@ -1,66 +1,76 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   checker.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jiwnam <jiwnam@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/20 21:40:45 by jiwnam            #+#    #+#             */
-/*   Updated: 2025/02/09 23:03:24 by jiwnam           ###   ########.fr       */
+/*   Created: 2025/02/09 22:04:32 by jiwnam            #+#    #+#             */
+/*   Updated: 2025/02/09 23:05:59 by jiwnam           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "checker.h"
 
-void	push_swap(t_stack *a, t_stack *b, int flag)
+int	checker(t_stack *a, t_stack *b)
 {
-	int	digit;
-	int	max_digit;
-	int	use_4;
+	char	*cmd;
 
-	if (is_sorted(a))
-		return ;
-	digit = 1;
-	max_digit = find_digit(a->top, 3);
-	use_4 = check_4_radix_sort(max_digit, a->top);
-	if (use_4)
-		max_digit--;
-	while (digit <= max_digit)
+	cmd = get_next_line(0);
+	while (cmd)
 	{
-		if (digit % 2 == 1)
-			radix_sort_atob_3(a, b, digit++, flag);
-		else if (digit % 2 == 0 && (digit < max_digit || use_4 == 0))
-			radix_sort_btoa_3(b, a, digit++, flag);
-		else
-			radix_sort_btoa_4(b, a, digit++, flag);
+		cmd_action(cmd, a, b);
+		cmd = get_next_line(0);
 	}
-	if (digit % 2 == 0)
-		radix_sort_btoa_3(b, a, digit++, flag);
+	if (is_sorted(a))
+		return (1);
+	return (0);
 }
 
-t_stack	*make_stack(char *av[], int size)
+void	cmd_action(char *cmd, t_stack *a, t_stack *b)
+{
+	size_t	cmd_len;
+
+	cmd_len = ft_strlen(cmd);
+	if (!ft_strncmp(cmd, "sa\n", cmd_len))
+		sa(a, 0);
+	if (!ft_strncmp(cmd, "sb\n", cmd_len))
+		sb(b, 0);
+	if (!ft_strncmp(cmd, "ss\n", cmd_len))
+		ss(a, b, 0);
+	if (!ft_strncmp(cmd, "pa\n", cmd_len))
+		pa(a, b, 0);
+	if (!ft_strncmp(cmd, "pb\n", cmd_len))
+		pb(a, b, 0);
+	if (!ft_strncmp(cmd, "ra\n", cmd_len))
+		ra(a, 0);
+	if (!ft_strncmp(cmd, "rb\n", cmd_len))
+		rb(b, 0);
+	if (!ft_strncmp(cmd, "rr\n", cmd_len))
+		rr(a, b, 0);
+	if (!ft_strncmp(cmd, "rra\n", cmd_len))
+		rra(a, 0);
+	if (!ft_strncmp(cmd, "rrb\n", cmd_len))
+		rrb(b, 0);
+	if (!ft_strncmp(cmd, "rrr\n", cmd_len))
+		rrr(a, b, 0);
+}
+
+void	make_stack(t_stack **a, t_stack **b, char *av[], int size)
 {
 	unsigned int	*tmp_arr;
-	t_stack			*a;
-	t_stack			*a_tmp;
 
 	tmp_arr = make_arr(av, size);
 	if (!tmp_arr)
 		print_error(NULL);
-	a = init_stack(size);
-	a_tmp = init_stack(size);
-	if (!a || !a_tmp)
+	*a = init_stack(size);
+	*b = init_stack(size);
+	if (!*a || !*b)
 	{
-		free_stack(a, a_tmp);
+		free_stack(*a, *b);
 		print_error((void **)&tmp_arr);
 	}
-	stack_value(tmp_arr, a_tmp, size);
-	push_swap(a_tmp, a, 0);
-	stack_value(tmp_arr, a, size);
-	stack_idx_value(a, a_tmp);
-	free_stack(a_tmp, NULL);
-	free(tmp_arr);
-	return (a);
+	stack_value(tmp_arr, *a, size);
 }
 
 unsigned int	*make_arr(char *av[], int size)
@@ -115,18 +125,4 @@ void	stack_value(unsigned int *arr, t_stack *st, int size)
 		push(st, num);
 		i++;
 	}
-}
-
-void	stack_idx_value(t_stack *a, t_stack *a_tmp)
-{
-	int				cnt;
-	unsigned int	data;
-
-	cnt = a_tmp->top;
-	while (cnt >= 0)
-	{
-		data = a->stack[cnt];
-		a->stack[cnt--] = a_tmp->stack[a_tmp->top - data];
-	}
-	a->top = a_tmp->top;
 }

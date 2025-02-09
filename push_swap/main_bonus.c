@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   main_bonus.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jiwnam <jiwnam@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/02 21:33:13 by jiwnam            #+#    #+#             */
-/*   Updated: 2025/02/09 20:49:27 by jiwnam           ###   ########.fr       */
+/*   Created: 2025/02/09 21:32:10 by jiwnam            #+#    #+#             */
+/*   Updated: 2025/02/09 22:57:35 by jiwnam           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "checker.h"
 
 int	main(int ac, char *av[])
 {
@@ -23,19 +23,10 @@ int	main(int ac, char *av[])
 		return (0);
 	while (idx < ac - 1)
 		cnt += count_nums(av[++idx]);
-	if (cnt <= 5)
-	{
-		mini_push_swap(a, b, av + 1, cnt);
-		return (0);
-	}
-	a = make_stack(av + 1, cnt);
-	b = init_stack(cnt);
-	if (!a || !b)
-	{
-		free_stack(a, b);
-		print_error(NULL);
-	}
-	push_swap(a, b, 1);
+	make_stack(&a, &b, av + 1, cnt);
+	if (checker(a, b))
+		ft_printf("OK\n");
+	else
+		ft_printf("KO\n");
 	free_stack(a, b);
-	return (0);
 }

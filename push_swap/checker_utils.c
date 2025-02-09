@@ -1,27 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap_utils.c                                  :+:      :+:    :+:   */
+/*   checker_utils.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jiwnam <jiwnam@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/31 15:38:35 by jiwnam            #+#    #+#             */
-/*   Updated: 2025/02/09 23:05:29 by jiwnam           ###   ########.fr       */
+/*   Created: 2025/02/09 22:10:57 by jiwnam            #+#    #+#             */
+/*   Updated: 2025/02/09 23:05:31 by jiwnam           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
-
-void	print_error(void **a)
-{
-	if (a && *a)
-	{
-		free(*a);
-		*a = NULL;
-	}
-	write(2, "Error\n", 6);
-	exit(0);
-}
+#include "checker.h"
 
 int	is_num(char *str)
 {
@@ -45,18 +34,6 @@ int	is_num(char *str)
 		str++;
 	}
 	return (1);
-}
-
-void	tmp_free(char **arr)
-{
-	size_t	idx;
-
-	if (!arr)
-		return ;
-	idx = 0;
-	while (arr[idx])
-		free(arr[idx++]);
-	free(arr);
 }
 
 int	count_nums(char *str)
@@ -94,4 +71,27 @@ void	free_stack(t_stack *st1, t_stack *st2)
 			free(st2->stack);
 		free(st2);
 	}
+}
+
+void	tmp_free(char **arr)
+{
+	size_t	idx;
+
+	if (!arr)
+		return ;
+	idx = 0;
+	while (arr[idx])
+		free(arr[idx++]);
+	free(arr);
+}
+
+void	print_error(void **a)
+{
+	if (a && *a)
+	{
+		free(*a);
+		*a = NULL;
+	}
+	write(2, "Error\n", 6);
+	exit(0);
 }

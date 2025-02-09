@@ -6,7 +6,7 @@
 #    By: jiwnam <jiwnam@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/19 20:07:57 by jiwnam            #+#    #+#              #
-#    Updated: 2025/02/09 19:52:48 by jiwnam           ###   ########.fr        #
+#    Updated: 2025/02/09 22:49:22 by jiwnam           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,7 +27,7 @@ CCFLAG			= -Wall -Wextra -Werror -g
 RM				= rm
 RMFLAG			= -rf
 
-MAN_SRC			= main.c				\
+MAN_SRC			= main_mandatory.c		\
 				  push_swap.c			\
 				  push_swap_utils.c		\
 				  radix_sort.c			\
@@ -39,7 +39,16 @@ MAN_SRC			= main.c				\
 				  reverse_rotate.c		\
 				  stack.c
 
-BONUS_SRC		=
+BONUS_SRC		= main_bonus.c			\
+				  checker.c				\
+				  checker_utils.c		\
+				  get_next_line.c		\
+				  get_next_line_utils.c	\
+				  swap.c				\
+				  push.c				\
+				  rotate.c				\
+				  reverse_rotate.c		\
+				  stack.c
 
 OBJ				= $(addprefix $(OBJ_DIR)/, $(SRC:.c=.o))
 
