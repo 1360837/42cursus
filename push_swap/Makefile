@@ -6,7 +6,7 @@
 #    By: jiwnam <jiwnam@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/19 20:07:57 by jiwnam            #+#    #+#              #
-#    Updated: 2025/02/09 22:49:22 by jiwnam           ###   ########.fr        #
+#    Updated: 2025/02/09 23:10:44 by jiwnam           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -72,7 +72,8 @@ clean			:
 
 fclean			: clean
 					@make -s -C $(PRINTF_DIR) fclean
-					$(RM) $(RMFLAG) $(NAME)
+					$(RM) $(RMFLAG) checker
+					$(RM) $(RMFLAG) push_swap
 
 re				: fclean all
 
