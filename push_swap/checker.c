@@ -6,7 +6,7 @@
 /*   By: jiwnam <jiwnam@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/09 22:04:32 by jiwnam            #+#    #+#             */
-/*   Updated: 2025/02/09 23:18:22 by jiwnam           ###   ########.fr       */
+/*   Updated: 2025/02/09 23:31:38 by jiwnam           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ int	checker(t_stack *a, t_stack *b)
 	while (cmd)
 	{
 		cmd_action(cmd, a, b);
+		free(cmd);
 		cmd = get_next_line(0);
 	}
 	if (is_sorted(a))
@@ -52,7 +53,7 @@ void	cmd_action(char *cmd, t_stack *a, t_stack *b)
 	else if (!ft_strncmp(cmd, "rrr\n", ft_strlen(cmd)))
 		rrr(a, b, 0);
 	else
-		return (free_stack(a, b), print_error(NULL));
+		return (free_stack(a, b), print_error((void **)&cmd));
 }
 
 void	make_stack(t_stack **a, t_stack **b, char *av[], int size)
@@ -70,6 +71,7 @@ void	make_stack(t_stack **a, t_stack **b, char *av[], int size)
 		print_error((void **)&tmp_arr);
 	}
 	stack_value(tmp_arr, *a, size);
+	free(tmp_arr);
 }
 
 unsigned int	*make_arr(char *av[], int size)

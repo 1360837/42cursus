@@ -6,7 +6,7 @@
 /*   By: jiwnam <jiwnam@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/09 19:52:19 by jiwnam            #+#    #+#             */
-/*   Updated: 2025/02/09 21:21:27 by jiwnam           ###   ########.fr       */
+/*   Updated: 2025/02/09 23:26:00 by jiwnam           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ void	mini_push_swap(t_stack *a, t_stack *b, char *av[], int size)
 		print_error((void **)&tmp_arr);
 	}
 	stack_value(tmp_arr, a, size);
+	free(tmp_arr);
 	if (size == 2)
 		push_swap_2(a);
 	if (size == 3)
