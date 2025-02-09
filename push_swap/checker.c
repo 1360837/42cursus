@@ -6,7 +6,7 @@
 /*   By: jiwnam <jiwnam@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/09 22:04:32 by jiwnam            #+#    #+#             */
-/*   Updated: 2025/02/09 23:05:59 by jiwnam           ###   ########.fr       */
+/*   Updated: 2025/02/09 23:18:22 by jiwnam           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,31 +29,30 @@ int	checker(t_stack *a, t_stack *b)
 
 void	cmd_action(char *cmd, t_stack *a, t_stack *b)
 {
-	size_t	cmd_len;
-
-	cmd_len = ft_strlen(cmd);
-	if (!ft_strncmp(cmd, "sa\n", cmd_len))
+	if (!ft_strncmp(cmd, "sa\n", ft_strlen(cmd)))
 		sa(a, 0);
-	if (!ft_strncmp(cmd, "sb\n", cmd_len))
+	else if (!ft_strncmp(cmd, "sb\n", ft_strlen(cmd)))
 		sb(b, 0);
-	if (!ft_strncmp(cmd, "ss\n", cmd_len))
+	else if (!ft_strncmp(cmd, "ss\n", ft_strlen(cmd)))
 		ss(a, b, 0);
-	if (!ft_strncmp(cmd, "pa\n", cmd_len))
+	else if (!ft_strncmp(cmd, "pa\n", ft_strlen(cmd)))
 		pa(a, b, 0);
-	if (!ft_strncmp(cmd, "pb\n", cmd_len))
+	else if (!ft_strncmp(cmd, "pb\n", ft_strlen(cmd)))
 		pb(a, b, 0);
-	if (!ft_strncmp(cmd, "ra\n", cmd_len))
+	else if (!ft_strncmp(cmd, "ra\n", ft_strlen(cmd)))
 		ra(a, 0);
-	if (!ft_strncmp(cmd, "rb\n", cmd_len))
+	else if (!ft_strncmp(cmd, "rb\n", ft_strlen(cmd)))
 		rb(b, 0);
-	if (!ft_strncmp(cmd, "rr\n", cmd_len))
+	else if (!ft_strncmp(cmd, "rr\n", ft_strlen(cmd)))
 		rr(a, b, 0);
-	if (!ft_strncmp(cmd, "rra\n", cmd_len))
+	else if (!ft_strncmp(cmd, "rra\n", ft_strlen(cmd)))
 		rra(a, 0);
-	if (!ft_strncmp(cmd, "rrb\n", cmd_len))
+	else if (!ft_strncmp(cmd, "rrb\n", ft_strlen(cmd)))
 		rrb(b, 0);
-	if (!ft_strncmp(cmd, "rrr\n", cmd_len))
+	else if (!ft_strncmp(cmd, "rrr\n", ft_strlen(cmd)))
 		rrr(a, b, 0);
+	else
+		return (free_stack(a, b), print_error(NULL));
 }
 
 void	make_stack(t_stack **a, t_stack **b, char *av[], int size)
