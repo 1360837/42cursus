@@ -6,7 +6,7 @@
 #    By: jiwnam <jiwnam@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/19 20:07:57 by jiwnam            #+#    #+#              #
-#    Updated: 2025/02/07 23:44:01 by jiwnam           ###   ########.fr        #
+#    Updated: 2025/02/09 19:52:48 by jiwnam           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,6 +32,7 @@ MAN_SRC			= main.c				\
 				  push_swap_utils.c		\
 				  radix_sort.c			\
 				  radix_sort_utils.c	\
+				  mini_push_swap.c		\
 				  swap.c				\
 				  push.c				\
 				  rotate.c				\

@@ -6,7 +6,7 @@
 /*   By: jiwnam <jiwnam@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/02 21:33:13 by jiwnam            #+#    #+#             */
-/*   Updated: 2025/02/08 02:05:54 by jiwnam           ###   ########.fr       */
+/*   Updated: 2025/02/09 20:49:27 by jiwnam           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,11 @@ int	main(int ac, char *av[])
 		return (0);
 	while (idx < ac - 1)
 		cnt += count_nums(av[++idx]);
+	if (cnt <= 5)
+	{
+		mini_push_swap(a, b, av + 1, cnt);
+		return (0);
+	}
 	a = make_stack(av + 1, cnt);
 	b = init_stack(cnt);
 	if (!a || !b)
@@ -32,4 +37,5 @@ int	main(int ac, char *av[])
 	}
 	push_swap(a, b, 1);
 	free_stack(a, b);
+	return (0);
 }
