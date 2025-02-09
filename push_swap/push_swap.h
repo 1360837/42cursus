@@ -6,7 +6,7 @@
 /*   By: jiwnam <jiwnam@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 21:26:17 by jiwnam            #+#    #+#             */
-/*   Updated: 2025/02/09 21:21:36 by jiwnam           ###   ########.fr       */
+/*   Updated: 2025/02/09 23:51:28 by jiwnam           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ typedef struct s_stack
 void			push_swap(t_stack *a, t_stack *b, int flag);
 t_stack			*make_stack(char *av[], int size);
 unsigned int	*make_arr(char *av[], int size);
-void			stack_value(unsigned int *arr, t_stack *st, int size);
+void			stack_value(unsigned int *a, t_stack *s, t_stack *t, int size);
 void			stack_idx_value(t_stack *a, t_stack *a_tmp);
 
 // push_swap_utils.c

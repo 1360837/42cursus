@@ -6,7 +6,7 @@
 /*   By: jiwnam <jiwnam@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/09 22:04:32 by jiwnam            #+#    #+#             */
-/*   Updated: 2025/02/09 23:31:38 by jiwnam           ###   ########.fr       */
+/*   Updated: 2025/02/09 23:48:04 by jiwnam           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,14 +64,16 @@ void	make_stack(t_stack **a, t_stack **b, char *av[], int size)
 	if (!tmp_arr)
 		print_error(NULL);
 	*a = init_stack(size);
-	*b = init_stack(size);
-	if (!*a || !*b)
-	{
-		free_stack(*a, *b);
+	if (!*a)
 		print_error((void **)&tmp_arr);
-	}
 	stack_value(tmp_arr, *a, size);
 	free(tmp_arr);
+	*b = init_stack(size);
+	if (!*b)
+	{
+		free_stack(*a, NULL);
+		print_error(NULL);
+	}
 }
 
 unsigned int	*make_arr(char *av[], int size)

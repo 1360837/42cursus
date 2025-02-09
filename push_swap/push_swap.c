@@ -6,7 +6,7 @@
 /*   By: jiwnam <jiwnam@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 21:40:45 by jiwnam            #+#    #+#             */
-/*   Updated: 2025/02/09 23:03:24 by jiwnam           ###   ########.fr       */
+/*   Updated: 2025/02/09 23:51:52 by jiwnam           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,9 +54,9 @@ t_stack	*make_stack(char *av[], int size)
 		free_stack(a, a_tmp);
 		print_error((void **)&tmp_arr);
 	}
-	stack_value(tmp_arr, a_tmp, size);
+	stack_value(tmp_arr, a_tmp, a, size);
 	push_swap(a_tmp, a, 0);
-	stack_value(tmp_arr, a, size);
+	stack_value(tmp_arr, a, a_tmp, size);
 	stack_idx_value(a, a_tmp);
 	free_stack(a_tmp, NULL);
 	free(tmp_arr);
@@ -90,7 +90,7 @@ unsigned int	*make_arr(char *av[], int size)
 	return (arr);
 }
 
-void	stack_value(unsigned int *arr, t_stack *st, int size)
+void	stack_value(unsigned int *arr, t_stack *st, t_stack *tmp, int size)
 {
 	int	i;
 	int	j;
@@ -107,7 +107,7 @@ void	stack_value(unsigned int *arr, t_stack *st, int size)
 				num++;
 			else if (j != i && arr[j] == arr[i])
 			{
-				free_stack(st, NULL);
+				free_stack(st, tmp);
 				print_error((void **)&arr);
 			}
 			j++;
