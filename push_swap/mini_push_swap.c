@@ -6,7 +6,7 @@
 /*   By: jiwnam <jiwnam@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/09 19:52:19 by jiwnam            #+#    #+#             */
-/*   Updated: 2025/02/09 23:52:16 by jiwnam           ###   ########.fr       */
+/*   Updated: 2025/02/10 15:58:39 by jiwnam           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,8 @@ void	push_swap_4(t_stack *a, t_stack *b)
 	int	idx;
 
 	idx = 0;
+	if (is_sorted(a))
+		return ;
 	while (idx < 4)
 	{
 		if (a->stack[a->top] <= 1)
@@ -88,6 +90,8 @@ void	push_swap_5(t_stack *a, t_stack *b)
 	int	idx;
 
 	idx = 0;
+	if (is_sorted(a))
+		return ;
 	while (idx < 5)
 	{
 		if (a->stack[a->top] < 2)
