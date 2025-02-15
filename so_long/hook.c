@@ -1,25 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   hook.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jiwnam <jiwnam@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/15 13:49:40 by jiwnam            #+#    #+#             */
-/*   Updated: 2025/02/15 18:42:52 by jiwnam           ###   ########.fr       */
+/*   Created: 2025/02/15 15:53:56 by jiwnam            #+#    #+#             */
+/*   Updated: 2025/02/15 18:41:09 by jiwnam           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-int	main(void)
+int key_hook(int key_code, t_mlx *ptr)
 {
-	t_mlx	ptr;
+	ft_printf("%d\n", (char)key_code);
+	if ((char)key_code == ESC)
+		return (mlx_close(ptr));
 
-	ptr.mlx = mlx_init();
-	ptr.win = mlx_new_window(ptr.mlx, 500, 500, "so_long");
-	mlx_key_hook(ptr.win, key_hook, &ptr);
-	mlx_hook(ptr.win, 17, 0, mlx_close, &ptr);
-	mlx_mouse_hook(ptr.win, mouse_hook, &ptr);
-	mlx_loop(ptr.mlx);
+
+	return (0);
+}
+
+int	mouse_hook(int button, t_mlx *ptr)
+{
+	ft_printf("%d\n", (char)button);
+	ft_printf("%p\n", ptr);
+	return (0);
 }
