@@ -6,7 +6,7 @@
 #    By: jiwnam <jiwnam@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/18 17:34:57 by jiwnam            #+#    #+#              #
-#    Updated: 2025/01/20 20:31:22 by jiwnam           ###   ########.fr        #
+#    Updated: 2025/02/15 14:21:18 by jiwnam           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,7 +22,7 @@ CCFLAG			= -Wall -Wextra -Werror
 RM				= rm
 RMFLAG			= -rf
 
-SRC				= 
+SRC				=
 
 OBJ				= $(SRC:.c=.o)
 
@@ -33,7 +33,7 @@ all				: $(NAME)
 
 $(NAME)			: $(OBJ) $(PRINTF_FILE)
 				make -C $(PRINTF_DIR)
-				$(CC) $(CCFLAG) $^ -L./ft_printf -lftprintf -o $@
+				$(CC) $(CCFLAG) $^ -L./ft_printf -lftprintf -L./minilibx-linux -lXext -lX11 -lm -lbsd -o $@
 
 $(PRINTF_FILE)	:
 				make -C $(PRINTF_DIR)
