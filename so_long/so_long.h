@@ -6,7 +6,7 @@
 /*   By: jiwnam <jiwnam@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/15 13:50:27 by jiwnam            #+#    #+#             */
-/*   Updated: 2025/02/15 18:38:41 by jiwnam           ###   ########.fr       */
+/*   Updated: 2025/02/19 23:20:16 by jiwnam           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,9 +35,12 @@ typedef struct s_mlx
 # define LEFT 97
 # define RIGHT 100
 
-// main.c
-
 // so_long.c
+
+// so_long_utils.c
+int	is_valid_file(char *av);
+int	is_valid_map(char *filename);
+void	print_error(char *message);
 
 // hook.c
 int	key_hook(int key_code, t_mlx *ptr);
