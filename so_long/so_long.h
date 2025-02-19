@@ -6,7 +6,7 @@
 /*   By: jiwnam <jiwnam@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/15 13:50:27 by jiwnam            #+#    #+#             */
-/*   Updated: 2025/02/19 23:20:16 by jiwnam           ###   ########.fr       */
+/*   Updated: 2025/02/19 23:22:28 by jiwnam           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,15 +38,15 @@ typedef struct s_mlx
 // so_long.c
 
 // so_long_utils.c
-int	is_valid_file(char *av);
-int	is_valid_map(char *filename);
+int		is_valid_file(char *av);
+int		is_valid_map(char *filename);
 void	print_error(char *message);
 
 // hook.c
-int	key_hook(int key_code, t_mlx *ptr);
-int	mouse_hook(int button, t_mlx *ptr);
+int		key_hook(int key_code, t_mlx *ptr);
+int		mouse_hook(int button, t_mlx *ptr);
 
 // window.c
-int	mlx_close(t_mlx *ptr);
+int		mlx_close(t_mlx *ptr);
 
 #endif

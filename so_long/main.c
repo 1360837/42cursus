@@ -6,7 +6,7 @@
 /*   By: jiwnam <jiwnam@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/15 13:49:40 by jiwnam            #+#    #+#             */
-/*   Updated: 2025/02/19 23:20:25 by jiwnam           ###   ########.fr       */
+/*   Updated: 2025/02/19 23:22:11 by jiwnam           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,4 +27,3 @@ int	main(int ac, char *av[])
 	mlx_mouse_hook(ptr.win, mouse_hook, &ptr);
 	mlx_loop(ptr.mlx);
 }
-
