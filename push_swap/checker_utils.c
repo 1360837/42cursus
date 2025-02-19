@@ -6,7 +6,7 @@
 /*   By: jiwnam <jiwnam@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/09 22:10:57 by jiwnam            #+#    #+#             */
-/*   Updated: 2025/02/09 23:05:31 by jiwnam           ###   ########.fr       */
+/*   Updated: 2025/02/19 18:52:10 by jiwnam           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int	is_num(char *str)
 	while (*str == '0')
 		str++;
 	str_len = ft_strlen(str);
-	if (str_len > 10)
+	if (str_len > 10 || str_len == 0)
 		return (0);
 	if (str_len == 10 && ft_strncmp(str, "2147483647", str_len) > 0)
 		return (0);
