@@ -6,7 +6,7 @@
 #    By: jiwnam <jiwnam@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/11/27 16:14:00 by jiwnam            #+#    #+#              #
-#    Updated: 2024/12/26 23:57:43 by jiwnam           ###   ########.fr        #
+#    Updated: 2025/02/25 22:03:03 by jiwnam           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,10 +22,10 @@ RMFLAG	= -f
 AR		= ar
 ARFLAG	= crs
 
-INCLUDE	= ./ft_printf.h
-
-SRCS	= ft_printf.c	\
-		  ft_printf_unum.c
+SRCS	= ft_printf.c			\
+		  ft_printf_unum.c		\
+		  get_next_line.c		\
+		  get_next_line_utils.c
 
 OBJS	= $(SRCS:.c=.o)
 
