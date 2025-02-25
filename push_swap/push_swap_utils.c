@@ -6,7 +6,7 @@
 /*   By: jiwnam <jiwnam@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/31 15:38:35 by jiwnam            #+#    #+#             */
-/*   Updated: 2025/02/19 18:47:50 by jiwnam           ###   ########.fr       */
+/*   Updated: 2025/02/19 22:55:47 by jiwnam           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,26 +25,53 @@ void	print_error(void **a)
 
 int	is_num(char *str)
 {
-	int	str_len;
+	// int	str_len;
+	// int	sign;
 
-	if (ft_strncmp(str, "-2147483648", 11) == 0)
-		return (1);
-	if (*str == '+' || *str == '-')
-		str++;
-	while (*str == '0')
-		str++;
-	str_len = ft_strlen(str);
-	if (str_len > 10 || str_len == 0)
-		return (0);
-	if (str_len == 10 && ft_strncmp(str, "2147483647", str_len) > 0)
-		return (0);
-	while (*str)
-	{
-		if (*str < '0' || *str > '9')
-			return (0);
-		str++;
-	}
-	return (1);
+	// sign = 1;
+	// if (*str == '-')
+	// 	sign = -1;
+	// if (*str == '+' || *str == '-')
+	// 	str++;
+	// while (*str == '0' && *(str + 1) == '0')
+	// 	str++;
+	// str_len = ft_strlen(str);
+	// if (str_len > 10)
+	// 	return (0);
+	// if (str_len == 10 && ((sign == 1 && ft_strncmp(str, "2147483647", str_len) > 0) || (sign == -1 && ft_strncmp(str, "2147483648", str_len) > 0)))
+	// 	return (0);
+	// while (*str)
+	// {
+	// 	if (*str < '0' || *str > '9')
+	// 		return (0);
+	// 	str++;
+	// }
+	// return (1);
+	int            i;
+    int            minus;
+    int            zero_count;
+    long long    num;
+
+    minus = 0;
+    if (str[0] == '-')
+        minus++;
+    if (str[minus] == '\0' || str[minus] == ' ')
+        return (0);
+    i = 0;
+    zero_count = 0;
+    while (str[i + minus + zero_count] == '0')
+        zero_count++;
+    num = 0;
+    while (str[i + minus])
+    {
+        num = (num * 10) + (str[i + minus] - '0');
+        if (num - minus > 2147483647 || i - zero_count > 10)
+            return (0);
+        else if ('0' > str[i + minus] || str[i + minus] > '9')
+            return (0);
+        i++;
+    }
+    return (1);
 }
 
 void	tmp_free(char **arr)
