@@ -6,7 +6,7 @@
 /*   By: jiwnam <jiwnam@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/19 23:14:26 by jiwnam            #+#    #+#             */
-/*   Updated: 2025/02/19 23:22:42 by jiwnam           ###   ########.fr       */
+/*   Updated: 2025/02/25 22:39:42 by jiwnam           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,6 @@ int	is_valid_file(char *av)
 	av_len = ft_strlen(av);
 	if (ft_strncmp(av + av_len - 4, ".ber", 4))
 		return (0);
-	return (1);
-}
-
-int	is_vaild_map(char *filename)
-{
 	return (1);
 }
 

@@ -6,7 +6,7 @@
 /*   By: jiwnam <jiwnam@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/15 13:50:27 by jiwnam            #+#    #+#             */
-/*   Updated: 2025/02/25 21:28:10 by jiwnam           ###   ########.fr       */
+/*   Updated: 2025/02/25 22:40:04 by jiwnam           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # include <ft_printf.h>
 # include <libft.h>
+# include <get_next_line.h>
 # include <mlx.h>
 # include <unistd.h>
 # include <stdlib.h>
@@ -22,7 +23,6 @@
 # include <stdio.h>
 # include <string.h>
 # include <errno.h>
-# include "get_next_line/get_next_line.h"
 
 typedef struct s_mlx
 {
@@ -40,10 +40,12 @@ typedef struct s_mlx
 
 // so_long_utils.c
 void	print_error(char *message);
+int		is_valid_file(char *av);
 
 // map_check.c
-int		is_valid_file(char *av);
+int		is_rectangle(char *input_line, int len);
 int		is_valid_map(char *filename);
+char	 **make_map(char *filename);
 
 // hook.c
 int		key_hook(int key_code, t_mlx *ptr);

@@ -6,7 +6,7 @@
 #    By: jiwnam <jiwnam@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/18 17:34:57 by jiwnam            #+#    #+#              #
-#    Updated: 2025/02/15 18:45:49 by jiwnam           ###   ########.fr        #
+#    Updated: 2025/02/25 23:03:27 by jiwnam           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,10 +23,10 @@ RM				= rm
 RMFLAG			= -rf
 
 SRC				= main.c			\
+				  so_long.c			\
+				  so_long_utils.c	\
 				  window.c			\
 				  hook.c			\
-
-
 
 OBJ				= $(addprefix $(OBJ_DIR)/, $(SRC:.c=.o))
 
