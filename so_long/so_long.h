@@ -6,7 +6,7 @@
 /*   By: jiwnam <jiwnam@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/15 13:50:27 by jiwnam            #+#    #+#             */
-/*   Updated: 2025/02/25 22:40:04 by jiwnam           ###   ########.fr       */
+/*   Updated: 2025/02/26 17:55:46 by jiwnam           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,13 @@ typedef struct s_mlx
 	void	*mlx;
 	void	*win;
 }	t_mlx;
+
+typedef struct s_map
+{
+	char	**map;
+	int		p_x;
+	int		p_y;
+}	t_map;
 
 # define ESC 27
 # define UP 119
