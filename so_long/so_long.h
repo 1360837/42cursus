@@ -6,7 +6,7 @@
 /*   By: jiwnam <jiwnam@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/15 13:50:27 by jiwnam            #+#    #+#             */
-/*   Updated: 2025/02/26 17:55:46 by jiwnam           ###   ########.fr       */
+/*   Updated: 2025/03/08 21:51:00 by jiwnam           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ int		is_valid_file(char *av);
 // map_check.c
 int		is_rectangle(char *input_line, int len);
 int		is_valid_map(char *filename);
-char	 **make_map(char *filename);
+char	**make_map(char *filename);
 
 // hook.c
 int		key_hook(int key_code, t_mlx *ptr);

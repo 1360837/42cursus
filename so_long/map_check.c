@@ -6,7 +6,7 @@
 /*   By: jiwnam <jiwnam@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/25 21:22:42 by jiwnam            #+#    #+#             */
-/*   Updated: 2025/02/26 17:55:54 by jiwnam           ###   ########.fr       */
+/*   Updated: 2025/03/08 21:50:11 by jiwnam           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ int	is_vaild_map(char *filename)
 	return (1);
 }
 
-char **make_map(char *filename)
+char	**make_map(char *filename)
 {
 	int		row_cnt;
 	int		col_cnt;
