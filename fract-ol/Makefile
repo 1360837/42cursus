@@ -6,7 +6,7 @@
 #    By: jiwnam <jiwnam@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/03/21 21:47:27 by jiwnam            #+#    #+#              #
-#    Updated: 2025/03/21 21:49:28 by jiwnam           ###   ########.fr        #
+#    Updated: 2025/03/21 22:12:21 by jiwnam           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,7 +22,7 @@ CCFLAG			= -Wall -Wextra -Werror -g
 RM				= rm
 RMFLAG			= -rf
 
-SRC				=
+SRC				= main.c		\
 
 OBJ				= $(addprefix $(OBJ_DIR)/, $(SRC:.c=.o))
 
